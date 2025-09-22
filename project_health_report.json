@@ -1,94 +1,26 @@
 {
-  "timestamp": "2025-09-21T17:26:01.699993",
+  "timestamp": "2025-09-21T17:35:58.288090",
   "project_root": "/Users/zhiledeng/Documents/augment-projects/01-active-projects/Firecrawl数据采集器",
   "checks": {
     "file_structure": {
       "missing_files": [],
       "missing_dirs": [],
       "extra_files": [],
-      "total_files": 17273,
+      "total_files": 48360,
       "status": "✅ 完整"
     },
     "dependencies": {
       "production_deps": {
         "total": 28,
-        "installed": 5,
-        "missing": [
-          "firecrawl-py",
-          "aiohttp",
-          "fastapi",
-          "uvicorn",
-          "schedule",
-          "python-multipart",
-          "python-jose",
-          "passlib",
-          "sqlalchemy",
-          "alembic",
-          "redis",
-          "prometheus-client",
-          "structlog",
-          "aiosmtplib",
-          "email-validator",
-          "pydantic",
-          "openai",
-          "langchain",
-          "pytest",
-          "pytest-asyncio",
-          "black",
-          "flake8",
-          "mypy"
-        ]
+        "installed": 28,
+        "missing": []
       },
       "dev_deps": {
         "total": 48,
-        "installed": 5,
-        "missing": [
-          "pytest",
-          "pytest-asyncio",
-          "pytest-cov",
-          "pytest-mock",
-          "pytest-benchmark",
-          "black",
-          "ruff",
-          "isort",
-          "mypy",
-          "flake8",
-          "bandit",
-          "safety",
-          "pdoc",
-          "mkdocs",
-          "mkdocs-material",
-          "pre-commit",
-          "watchdog",
-          "ipython",
-          "jupyter",
-          "pdbpp",
-          "memory-profiler",
-          "line-profiler",
-          "py-spy",
-          "types-requests",
-          "types-redis",
-          "types-PyYAML",
-          "coverage",
-          "codecov",
-          "fastapi",
-          "pytest-postgresql",
-          "pytest-redis",
-          "structlog",
-          "prometheus-client",
-          "pydantic",
-          "jsonschema",
-          "aiofiles",
-          "asyncio-mqtt",
-          "tqdm",
-          "tabulate",
-          "bump2version",
-          "pip-licenses",
-          "pipdeptree",
-          "pip-audit"
-        ]
+        "installed": 48,
+        "missing": []
       },
-      "status": "❌ 不完整"
+      "status": "✅ 良好"
     },
     "source_code": {
       "modules": {
@@ -98,7 +30,7 @@
         },
         "database_models": {
           "syntax": "✅",
-          "import": "❌ No module named 'sqlalchemy'"
+          "import": "✅"
         },
         "task_scheduler": {
           "syntax": "✅",
@@ -110,7 +42,7 @@
         },
         "firecrawl_pipeline_manager": {
           "syntax": "✅",
-          "import": "❌ No module named 'aiohttp'"
+          "import": "✅"
         },
         "firecrawl_config": {
           "syntax": "✅",
@@ -118,11 +50,11 @@
         },
         "api_server": {
           "syntax": "✅",
-          "import": "❌ No module named 'fastapi'"
+          "import": "✅"
         },
         "pipeline_config": {
           "syntax": "✅",
-          "import": "❌ No module named 'pydantic'"
+          "import": "✅"
         },
         "api_integration": {
           "syntax": "✅",
@@ -130,25 +62,18 @@
         },
         "firecrawl_observer": {
           "syntax": "✅",
-          "import": "❌ No module named 'aiohttp'"
+          "import": "✅"
         },
         "firecrawl_collector": {
           "syntax": "✅",
-          "import": "❌ No module named 'firecrawl'"
+          "import": "✅"
         }
       },
       "syntax_errors": [],
-      "import_errors": [
-        "database_models: No module named 'sqlalchemy'",
-        "firecrawl_pipeline_manager: No module named 'aiohttp'",
-        "api_server: No module named 'fastapi'",
-        "pipeline_config: No module named 'pydantic'",
-        "firecrawl_observer: No module named 'aiohttp'",
-        "firecrawl_collector: No module named 'firecrawl'"
-      ],
+      "import_errors": [],
       "total_modules": 11,
-      "valid_modules": 5,
-      "status": "❌ 问题较多"
+      "valid_modules": 11,
+      "status": "✅ 良好"
     },
     "configuration": {
       "config_files": {
@@ -191,11 +116,11 @@
     }
   },
   "summary": {
-    "overall_health": "❌ 需要改进",
+    "overall_health": "✅ 优秀",
     "total_checks": 6,
-    "excellent": 3,
+    "excellent": 5,
     "good": 1,
-    "poor": 2,
-    "health_score": "58.3%"
+    "poor": 0,
+    "health_score": "91.7%"
   }
 }

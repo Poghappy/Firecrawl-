@@ -17,11 +17,16 @@ from pathlib import Path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 try:
-    from pipeline_config import ConfigManager, APIConfig, CrawlConfig
-    from firecrawl_pipeline_manager import FirecrawlPipelineManager
-    from database_models import CrawlJob, JobStatus, JobPriority
+    # 添加src目录到Python路径
+    src_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'src')
+    sys.path.insert(0, src_path)
+    
+    from src.pipeline_config import ConfigManager, APIConfig, CrawlConfig
+    from src.firecrawl_pipeline_manager import FirecrawlPipelineManager
+    from src.database_models import CrawlJob, JobStatus, JobPriority
 except ImportError as e:
     print(f"❌ 模块导入失败: {e}")
+    print("请确保在项目根目录运行此测试")
     sys.exit(1)
 
 class LocalTester:
