@@ -48,11 +48,9 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         context: .
-        file: ./config/deployment/Dockerfile
+        file: ./Dockerfile
         push: true
-        tags: |
-          denzhile/firecrawl:latest
-          denzhile/firecrawl:${{ github.sha }}
+        tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         cache-from: type=gha
         cache-to: type=gha,mode=max

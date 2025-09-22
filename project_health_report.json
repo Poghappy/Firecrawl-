@@ -1,12 +1,12 @@
 {
-  "timestamp": "2025-09-21T17:35:58.288090",
+  "timestamp": "2025-09-21T17:37:51.569983",
   "project_root": "/Users/zhiledeng/Documents/augment-projects/01-active-projects/Firecrawl数据采集器",
   "checks": {
     "file_structure": {
       "missing_files": [],
       "missing_dirs": [],
       "extra_files": [],
-      "total_files": 48360,
+      "total_files": 48484,
       "status": "✅ 完整"
     },
     "dependencies": {
@@ -64,6 +64,10 @@
           "syntax": "✅",
           "import": "✅"
         },
+        "enhanced_api_server": {
+          "syntax": "✅",
+          "import": "✅"
+        },
         "firecrawl_collector": {
           "syntax": "✅",
           "import": "✅"
@@ -71,8 +75,8 @@
       },
       "syntax_errors": [],
       "import_errors": [],
-      "total_modules": 11,
-      "valid_modules": 11,
+      "total_modules": 12,
+      "valid_modules": 12,
       "status": "✅ 良好"
     },
     "configuration": {
@@ -94,16 +98,18 @@
     },
     "tests": {
       "test_files": {
+        "test_basic.py": "✅ 有效测试",
         "local_test.py": "✅ 有效测试",
         "quick_test.py": "⚠️ 无测试函数",
         "toutiao_batch_scraper.py": "⚠️ 无测试函数",
         "toutiao_batch_scraper_fixed.py": "⚠️ 无测试函数",
         "quick_test_fixed.py": "⚠️ 无测试函数",
         "verify_fixes.py": "✅ 有效测试",
+        "test_enhanced_api.py": "✅ 有效测试",
         "integration_test.py": "✅ 有效测试"
       },
-      "total_tests": 7,
-      "runnable_tests": 3,
+      "total_tests": 9,
+      "runnable_tests": 5,
       "status": "⚠️ 部分可用"
     },
     "documentation": {
