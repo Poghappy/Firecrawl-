@@ -50,7 +50,9 @@ jobs:
         context: .
         file: ./config/deployment/Dockerfile
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        tags: |
+          denzhile/firecrawl:latest
+          denzhile/firecrawl:${{ github.sha }}
         labels: ${{ steps.meta.outputs.labels }}
         cache-from: type=gha
         cache-to: type=gha,mode=max

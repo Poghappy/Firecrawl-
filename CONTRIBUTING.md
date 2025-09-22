@@ -1,82 +1,80 @@
-# 贡献指南
+# 🤝 贡献指南
 
-欢迎为Firecrawl数据采集器项目做出贡献！本指南将帮助您了解如何参与项目开发。
+感谢您对Firecrawl数据采集器项目的关注！我们欢迎各种形式的贡献，包括但不限于代码、文档、测试、问题报告等。
 
-## 📋 目录
-- [开发环境设置](#开发环境设置)
-- [代码规范](#代码规范)
-- [提交流程](#提交流程)
-- [测试要求](#测试要求)
-- [文档要求](#文档要求)
-- [发布流程](#发布流程)
+## 📋 贡献方式
 
-## 🚀 开发环境设置
+### 🐛 报告问题
+- 使用 [Bug报告模板](.github/ISSUE_TEMPLATE/bug_report.md)
+- 提供详细的复现步骤和环境信息
+- 检查是否已有类似问题
 
-### 1. 克隆项目
+### 💡 功能请求
+- 使用 [功能请求模板](.github/ISSUE_TEMPLATE/feature_request.md)
+- 描述使用场景和预期效果
+- 考虑向后兼容性
+
+### 🔧 代码贡献
+- Fork仓库并创建功能分支
+- 遵循代码规范和提交规范
+- 添加必要的测试和文档
+- 提交Pull Request
+
+## 🛠️ 开发环境设置
+
+### 1. 环境要求
+- Python 3.9+
+- Git
+- Docker (可选)
+
+### 2. 本地开发设置
 ```bash
-git clone <repository-url>
-cd Firecrawl数据采集器
-```
+# 1. Fork并克隆仓库
+git clone https://github.com/your-username/Firecrawl-.git
+cd Firecrawl-
 
-### 2. 设置虚拟环境
-```bash
-# 使用Makefile快速设置
-make setup
-source firecrawl_env/bin/activate
+# 2. 创建虚拟环境
+python -m venv firecrawl_env
+source firecrawl_env/bin/activate  # Linux/Mac
+# 或
+firecrawl_env\Scripts\activate  # Windows
 
-# 或手动设置
-python3 -m venv firecrawl_env
-source firecrawl_env/bin/activate
+# 3. 安装依赖
 pip install -r requirements.txt
-```
-
-### 3. 安装开发依赖
-```bash
-make dev
-# 或
 pip install -r requirements-dev.txt
-pre-commit install
+
+# 4. 配置环境变量
+cp .env.example .env
+# 编辑.env文件，填入必要的API密钥
+
+# 5. 运行测试
+pytest tests/ -v
 ```
 
-### 4. 验证环境
+### 3. 代码质量工具
 ```bash
-make check-all
-```
+# 代码格式化
+black src/ tests/
+isort src/ tests/
 
-## 💻 代码规范
-
-### Python代码规范
-- 遵循PEP 8标准
-- 使用Black进行代码格式化
-- 使用Ruff进行代码检查
-- 使用MyPy进行类型检查
-
-### 代码格式化
-```bash
-make format
-```
-
-### 代码检查
-```bash
-make lint
-```
-
-### 类型检查
-```bash
+# 代码检查
+flake8 src/ tests/
 mypy src/
+
+# 运行测试
+pytest tests/ --cov=src --cov-report=html
 ```
 
-## 📝 提交流程
+## 📝 代码规范
 
-### 1. 创建分支
-```bash
-git checkout -b feature/your-feature-name
-# 或
-git checkout -b fix/your-bug-fix
-```
+### 1. Python代码规范
+- 遵循 [PEP 8](https://www.python.org/dev/peps/pep-0008/) 风格指南
+- 使用 [Black](https://black.readthedocs.io/) 进行代码格式化
+- 使用 [isort](https://pycqa.github.io/isort/) 进行导入排序
+- 使用 [mypy](http://mypy-lang.org/) 进行类型检查
 
-### 2. 提交规范
-使用Conventional Commits规范：
+### 2. 提交信息规范
+使用 [Conventional Commits](https://www.conventionalcommits.org/) 规范：
 
 ```
 <type>[optional scope]: <description>
@@ -86,7 +84,7 @@ git checkout -b fix/your-bug-fix
 [optional footer(s)]
 ```
 
-#### 提交类型
+#### 类型说明
 - `feat`: 新功能
 - `fix`: 修复bug
 - `docs`: 文档更新
@@ -95,234 +93,172 @@ git checkout -b fix/your-bug-fix
 - `test`: 测试相关
 - `chore`: 构建过程或辅助工具的变动
 
-#### 提交示例
-```bash
+#### 示例
+```
 feat(api): add user authentication endpoint
-fix(collector): handle timeout errors gracefully
-docs(readme): update installation instructions
-test(unit): add tests for data processor
+
+- Add JWT token validation
+- Implement user login/logout
+- Add password hashing
+
+Closes #123
 ```
 
-### 3. 提交前检查
-```bash
-make check-all
-```
+### 3. 分支命名规范
+- `feature/功能名称`: 新功能开发
+- `fix/问题描述`: Bug修复
+- `docs/文档更新`: 文档相关
+- `refactor/重构内容`: 代码重构
 
-### 4. 推送和创建PR
-```bash
-git push origin feature/your-feature-name
-```
+## 🧪 测试指南
 
-## 🧪 测试要求
+### 1. 测试类型
+- **单元测试**: 测试单个函数或方法
+- **集成测试**: 测试模块间交互
+- **端到端测试**: 测试完整工作流
 
-### 测试覆盖率
-- 单元测试覆盖率 ≥ 80%
-- 集成测试覆盖率 ≥ 60%
-- 关键业务逻辑覆盖率 ≥ 95%
+### 2. 测试覆盖率
+- 目标覆盖率: 80%+
+- 核心模块覆盖率: 90%+
 
-### 运行测试
+### 3. 运行测试
 ```bash
 # 运行所有测试
-make test
+pytest
 
-# 运行单元测试
-make test-unit
+# 运行特定测试文件
+pytest tests/test_api.py
 
-# 运行集成测试
-make test-integration
+# 运行测试并生成覆盖率报告
+pytest --cov=src --cov-report=html
 
-# 运行端到端测试
-make test-e2e
-
-# 生成覆盖率报告
-make cov
+# 运行测试并查看覆盖率
+pytest --cov=src --cov-report=term-missing
 ```
 
-### 测试编写规范
-```python
-import pytest
-from unittest.mock import Mock, patch
+## 📚 文档规范
 
-class TestDataProcessor:
-    """数据处理器测试类"""
-    
-    def setup_method(self):
-        """测试前准备"""
-        self.processor = DataProcessor()
-    
-    def test_process_valid_data(self):
-        """测试处理有效数据"""
-        # Given
-        input_data = {"title": "Test", "content": "Test content"}
-        
-        # When
-        result = self.processor.process(input_data)
-        
-        # Then
-        assert result["title"] == "Test"
-        assert result["content"] == "Test content"
-    
-    @pytest.mark.asyncio
-    async def test_process_async_data(self):
-        """测试异步数据处理"""
-        # Given
-        input_data = {"title": "Async Test"}
-        
-        # When
-        result = await self.processor.process_async(input_data)
-        
-        # Then
-        assert result is not None
-    
-    def test_process_invalid_data(self):
-        """测试处理无效数据"""
-        # Given
-        invalid_data = None
-        
-        # When & Then
-        with pytest.raises(ValueError):
-            self.processor.process(invalid_data)
-```
-
-## 📚 文档要求
-
-### 代码文档
-- 所有公共函数和类必须有docstring
-- 使用Google风格的docstring
+### 1. 代码文档
+- 使用 [Google风格](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings) 的docstring
+- 为所有公共函数和类添加文档
 - 包含参数、返回值和异常说明
 
+### 2. 示例
 ```python
-def process_data(self, data: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    处理采集的原始数据
+def crawl_url(url: str, options: dict = None) -> dict:
+    """爬取指定URL的内容。
     
     Args:
-        data: 原始数据字典
+        url: 要爬取的URL
+        options: 爬取选项，包含headers、timeout等
         
     Returns:
-        处理后的结构化数据
+        包含爬取结果的字典，格式为:
+        {
+            'success': bool,
+            'data': dict,
+            'error': str
+        }
         
     Raises:
-        ValueError: 当数据格式不正确时
-        ProcessingError: 当处理过程中发生错误时
-        
-    Example:
-        >>> processor = DataProcessor()
-        >>> result = processor.process_data({"title": "Test"})
-        >>> print(result["title"])
-        Test
+        ValueError: 当URL格式不正确时
+        ConnectionError: 当网络连接失败时
     """
     pass
 ```
 
-### API文档
-- 使用FastAPI自动生成API文档
-- 为每个端点提供详细描述
-- 包含请求和响应示例
+### 3. README更新
+- 新功能需要更新README.md
+- 添加使用示例和配置说明
+- 更新依赖和安装说明
 
-### 项目文档
-- 更新README.md
-- 维护CHANGELOG.md
-- 编写部署指南
+## 🔄 Pull Request流程
 
-## 🔄 发布流程
+### 1. 创建PR前
+- [ ] 确保代码通过所有测试
+- [ ] 更新相关文档
+- [ ] 添加必要的测试用例
+- [ ] 遵循代码规范
 
-### 1. 版本管理
-使用语义化版本控制：
-- MAJOR: 不兼容的API修改
-- MINOR: 向下兼容的功能性新增
-- PATCH: 向下兼容的问题修正
+### 2. PR描述
+使用 [PR模板](.github/pull_request_template.md) 填写：
+- 变更描述
+- 相关Issue
+- 测试说明
+- 检查清单
 
-### 2. 发布检查清单
-- [ ] 所有测试通过
-- [ ] 代码覆盖率达标
-- [ ] 文档已更新
-- [ ] CHANGELOG.md已更新
-- [ ] 版本号已更新
+### 3. 代码审查
+- 至少需要1个审查者批准
+- 解决所有审查意见
+- 保持PR简洁，避免过大的变更
 
-### 3. 发布命令
-```bash
-# 发布准备
-make release-prep
+### 4. 合并后
+- 删除功能分支
+- 更新本地main分支
+- 检查CI/CD状态
 
-# 构建Docker镜像
-make build-prod
+## 🏷️ 版本发布
 
-# 部署到生产环境
-make deploy
-```
+### 1. 版本号规范
+使用 [语义化版本](https://semver.org/lang/zh-CN/)：
+- `MAJOR.MINOR.PATCH`
+- `1.0.0` - 初始版本
+- `1.1.0` - 新功能
+- `1.1.1` - Bug修复
 
-## 🐛 问题报告
+### 2. 发布流程
+1. 更新 `CHANGELOG.md`
+2. 更新版本号
+3. 创建Git标签
+4. 触发自动发布
 
-### Bug报告模板
-```markdown
-## Bug描述
-简要描述bug
+## 🎯 贡献优先级
 
-## 重现步骤
-1. 执行步骤1
-2. 执行步骤2
-3. 执行步骤3
+### 高优先级
+- 修复关键bug
+- 性能优化
+- 安全加固
+- 核心功能完善
 
-## 预期行为
-描述预期行为
+### 中优先级
+- 新功能开发
+- 文档完善
+- 测试覆盖率提升
+- 用户体验改进
 
-## 实际行为
-描述实际行为
+### 低优先级
+- 代码重构
+- 工具链优化
+- 示例代码
+- 社区建设
 
-## 环境信息
-- Python版本: 3.13.7
-- 操作系统: macOS
-- 项目版本: v1.0.0
+## 🚫 不接受的贡献
 
-## 附加信息
-添加任何其他相关信息
-```
-
-### 功能请求模板
-```markdown
-## 功能描述
-简要描述请求的功能
-
-## 使用场景
-描述功能的使用场景
-
-## 预期行为
-描述功能的预期行为
-
-## 替代方案
-描述考虑过的替代方案
-
-## 附加信息
-添加任何其他相关信息
-```
-
-## 🤝 代码审查
-
-### 审查检查清单
-- [ ] 代码符合项目规范
-- [ ] 测试覆盖率达标
-- [ ] 文档已更新
-- [ ] 性能影响已评估
-- [ ] 安全问题已检查
-
-### 审查流程
-1. 创建Pull Request
-2. 等待代码审查
-3. 根据反馈修改代码
-4. 审查通过后合并
+- 包含恶意代码的PR
+- 违反项目许可证的代码
+- 没有测试覆盖的新功能
+- 破坏向后兼容性的变更（除非有充分理由）
 
 ## 📞 获取帮助
 
-- 查看项目文档
-- 提交Issue
-- 参与讨论
-- 联系维护者
+### 联系方式
+- **GitHub Issues**: [问题跟踪](https://github.com/Poghappy/Firecrawl-/issues)
+- **讨论区**: [GitHub Discussions](https://github.com/Poghappy/Firecrawl-/discussions)
+- **邮件**: 通过GitHub联系维护者
+
+### 常见问题
+- 查看 [FAQ文档](docs/FAQ.md)
+- 搜索现有Issues
+- 查看 [故障排除指南](docs/TROUBLESHOOTING.md)
 
 ## 📄 许可证
 
-本项目采用MIT许可证，详见LICENSE文件。
+本项目采用 [MIT许可证](LICENSE)。贡献代码即表示您同意将代码在MIT许可证下发布。
 
 ## 🙏 致谢
 
-感谢所有为项目做出贡献的开发者！
+感谢所有为项目做出贡献的开发者！您的贡献让项目变得更好。
+
+---
+
+**注意**: 请确保在贡献前仔细阅读本指南，如有疑问请随时联系维护者。

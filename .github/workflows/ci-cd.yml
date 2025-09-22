@@ -82,8 +82,8 @@ jobs:
         file: ./config/deployment/Dockerfile
         push: true
         tags: |
-          poghappy/firecrawl-collector:latest
-          poghappy/firecrawl-collector:${{ github.sha }}
+          denzhile/firecrawl:latest
+          denzhile/firecrawl:${{ github.sha }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
 
