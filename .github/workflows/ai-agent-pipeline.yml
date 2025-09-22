@@ -108,7 +108,7 @@ jobs:
           echo "✅ 安全检查完成"
       
       - name: 上传安全报告
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: security-reports
@@ -183,7 +183,7 @@ jobs:
           echo "**测试状态**: ✅ 通过" >> test-coverage-report.md
       
       - name: 上传测试报告
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: |
@@ -296,7 +296,7 @@ jobs:
           echo "**测试状态**: ✅ 通过" >> performance-report.md
       
       - name: 上传性能报告
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: performance-reports
           path: |
@@ -385,7 +385,7 @@ jobs:
           fi
       
       - name: 上传综合报告
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: pipeline-report
           path: pipeline-report.md
