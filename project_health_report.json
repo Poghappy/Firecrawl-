@@ -1,0 +1,201 @@
+{
+  "timestamp": "2025-09-21T17:26:01.699993",
+  "project_root": "/Users/zhiledeng/Documents/augment-projects/01-active-projects/Firecrawl数据采集器",
+  "checks": {
+    "file_structure": {
+      "missing_files": [],
+      "missing_dirs": [],
+      "extra_files": [],
+      "total_files": 17273,
+      "status": "✅ 完整"
+    },
+    "dependencies": {
+      "production_deps": {
+        "total": 28,
+        "installed": 5,
+        "missing": [
+          "firecrawl-py",
+          "aiohttp",
+          "fastapi",
+          "uvicorn",
+          "schedule",
+          "python-multipart",
+          "python-jose",
+          "passlib",
+          "sqlalchemy",
+          "alembic",
+          "redis",
+          "prometheus-client",
+          "structlog",
+          "aiosmtplib",
+          "email-validator",
+          "pydantic",
+          "openai",
+          "langchain",
+          "pytest",
+          "pytest-asyncio",
+          "black",
+          "flake8",
+          "mypy"
+        ]
+      },
+      "dev_deps": {
+        "total": 48,
+        "installed": 5,
+        "missing": [
+          "pytest",
+          "pytest-asyncio",
+          "pytest-cov",
+          "pytest-mock",
+          "pytest-benchmark",
+          "black",
+          "ruff",
+          "isort",
+          "mypy",
+          "flake8",
+          "bandit",
+          "safety",
+          "pdoc",
+          "mkdocs",
+          "mkdocs-material",
+          "pre-commit",
+          "watchdog",
+          "ipython",
+          "jupyter",
+          "pdbpp",
+          "memory-profiler",
+          "line-profiler",
+          "py-spy",
+          "types-requests",
+          "types-redis",
+          "types-PyYAML",
+          "coverage",
+          "codecov",
+          "fastapi",
+          "pytest-postgresql",
+          "pytest-redis",
+          "structlog",
+          "prometheus-client",
+          "pydantic",
+          "jsonschema",
+          "aiofiles",
+          "asyncio-mqtt",
+          "tqdm",
+          "tabulate",
+          "bump2version",
+          "pip-licenses",
+          "pipdeptree",
+          "pip-audit"
+        ]
+      },
+      "status": "❌ 不完整"
+    },
+    "source_code": {
+      "modules": {
+        "data_processor": {
+          "syntax": "✅",
+          "import": "✅"
+        },
+        "database_models": {
+          "syntax": "✅",
+          "import": "❌ No module named 'sqlalchemy'"
+        },
+        "task_scheduler": {
+          "syntax": "✅",
+          "import": "✅"
+        },
+        "firecrawl_v2_unified_scraper": {
+          "syntax": "✅",
+          "import": "✅"
+        },
+        "firecrawl_pipeline_manager": {
+          "syntax": "✅",
+          "import": "❌ No module named 'aiohttp'"
+        },
+        "firecrawl_config": {
+          "syntax": "✅",
+          "import": "✅"
+        },
+        "api_server": {
+          "syntax": "✅",
+          "import": "❌ No module named 'fastapi'"
+        },
+        "pipeline_config": {
+          "syntax": "✅",
+          "import": "❌ No module named 'pydantic'"
+        },
+        "api_integration": {
+          "syntax": "✅",
+          "import": "✅"
+        },
+        "firecrawl_observer": {
+          "syntax": "✅",
+          "import": "❌ No module named 'aiohttp'"
+        },
+        "firecrawl_collector": {
+          "syntax": "✅",
+          "import": "❌ No module named 'firecrawl'"
+        }
+      },
+      "syntax_errors": [],
+      "import_errors": [
+        "database_models: No module named 'sqlalchemy'",
+        "firecrawl_pipeline_manager: No module named 'aiohttp'",
+        "api_server: No module named 'fastapi'",
+        "pipeline_config: No module named 'pydantic'",
+        "firecrawl_observer: No module named 'aiohttp'",
+        "firecrawl_collector: No module named 'firecrawl'"
+      ],
+      "total_modules": 11,
+      "valid_modules": 5,
+      "status": "❌ 问题较多"
+    },
+    "configuration": {
+      "config_files": {
+        "results/config.json": "✅ 有效",
+        "results/config_example.json": "✅ 有效"
+      },
+      "docker_files": {
+        "config/deployment/Dockerfile": "✅ 存在",
+        "config/deployment/docker-compose.yml": "✅ 存在",
+        "config/deployment/docker-compose.production.yml": "✅ 存在"
+      },
+      "github_actions": {
+        "docker-build.yml": "✅ 存在",
+        "ci-cd.yml": "✅ 存在",
+        "ai-agent-pipeline.yml": "✅ 存在"
+      },
+      "status": "✅ 完整"
+    },
+    "tests": {
+      "test_files": {
+        "local_test.py": "✅ 有效测试",
+        "quick_test.py": "⚠️ 无测试函数",
+        "toutiao_batch_scraper.py": "⚠️ 无测试函数",
+        "toutiao_batch_scraper_fixed.py": "⚠️ 无测试函数",
+        "quick_test_fixed.py": "⚠️ 无测试函数",
+        "verify_fixes.py": "✅ 有效测试",
+        "integration_test.py": "✅ 有效测试"
+      },
+      "total_tests": 7,
+      "runnable_tests": 3,
+      "status": "⚠️ 部分可用"
+    },
+    "documentation": {
+      "readme": "✅",
+      "api_docs": "✅",
+      "deployment_docs": "✅",
+      "examples": "✅",
+      "total_docs": 290,
+      "status": "✅ 完整"
+    }
+  },
+  "summary": {
+    "overall_health": "❌ 需要改进",
+    "total_checks": 6,
+    "excellent": 3,
+    "good": 1,
+    "poor": 2,
+    "health_score": "58.3%"
+  }
+}

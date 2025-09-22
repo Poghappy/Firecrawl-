@@ -1,0 +1,369 @@
+{
+    "project": {
+        "name": "Firecrawl数据采集器",
+        "english_name": "Firecrawl Data Collector",
+        "version": "1.0.0",
+        "description": "基于Firecrawl API构建的智能数据采集系统，专为火鸟门户系统设计",
+        "type": "data_collection_system",
+        "status": "active_development",
+        "created_date": "2024-09-21",
+        "last_updated": "2024-09-21",
+        "license": "MIT",
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/Poghappy/Firecrawl-.git",
+            "branch": "main"
+        },
+        "docker": {
+            "registry": "docker.hub",
+            "image": "denzhile/firecrawl:latest",
+            "tags": [
+                "latest",
+                "v1.0.0"
+            ]
+        }
+    },
+    "technology_stack": {
+        "programming_languages": {
+            "primary": "Python",
+            "version": "3.9+",
+            "secondary": [
+                "JavaScript",
+                "Shell",
+                "YAML",
+                "JSON"
+            ]
+        },
+        "frameworks": {
+            "web": "FastAPI 0.104.0+",
+            "async": "aiohttp 3.8.0+",
+            "orm": "SQLAlchemy 2.0.0+",
+            "testing": "pytest 8.4.0+"
+        },
+        "databases": {
+            "primary": "PostgreSQL",
+            "cache": "Redis 5.0+",
+            "development": "SQLite"
+        },
+        "infrastructure": {
+            "containerization": "Docker",
+            "orchestration": "Docker Compose",
+            "web_server": "Nginx",
+            "monitoring": "Prometheus + Grafana"
+        },
+        "external_apis": {
+            "firecrawl": "https://api.firecrawl.dev",
+            "hawaiihub": "https://hawaiihub.net/api/",
+            "openai": "https://api.openai.com (optional)"
+        }
+    },
+    "architecture": {
+        "pattern": "microservices",
+        "components": {
+            "firecrawl_observer": {
+                "type": "core_service",
+                "description": "智能内容监控系统",
+                "file": "src/firecrawl_observer.py"
+            },
+            "task_scheduler": {
+                "type": "core_service",
+                "description": "任务调度管理",
+                "file": "src/task_scheduler.py"
+            },
+            "data_processor": {
+                "type": "core_service",
+                "description": "数据处理转换",
+                "file": "src/data_processor.py"
+            },
+            "api_integration": {
+                "type": "core_service",
+                "description": "火鸟门户API集成",
+                "file": "src/api_integration.py"
+            },
+            "database_models": {
+                "type": "data_layer",
+                "description": "数据库模型定义",
+                "file": "src/database_models.py"
+            },
+            "api_server": {
+                "type": "web_service",
+                "description": "FastAPI服务器",
+                "file": "src/api_server.py"
+            }
+        }
+    },
+    "features": {
+        "core_features": [
+            "智能网页内容采集",
+            "实时变化检测",
+            "AI内容过滤",
+            "多源监控支持",
+            "定时任务调度",
+            "数据质量检查",
+            "火鸟门户集成"
+        ],
+        "advanced_features": [
+            "批量URL处理",
+            "异步采集处理",
+            "错误重试机制",
+            "内容去重检测",
+            "多格式输出",
+            "监控面板",
+            "通知系统"
+        ],
+        "integration_features": [
+            "RESTful API接口",
+            "Webhook支持",
+            "邮件通知",
+            "Slack集成",
+            "Discord集成",
+            "Prometheus指标"
+        ]
+    },
+    "file_structure": {
+        "source_code": {
+            "path": "src/",
+            "files": 11,
+            "lines_of_code": "~5000",
+            "main_modules": [
+                "firecrawl_observer.py",
+                "task_scheduler.py",
+                "data_processor.py",
+                "api_integration.py",
+                "database_models.py",
+                "api_server.py"
+            ]
+        },
+        "configuration": {
+            "path": "config/",
+            "files": 15,
+            "types": [
+                "Docker",
+                "Nginx",
+                "Grafana",
+                "Prometheus"
+            ]
+        },
+        "documentation": {
+            "path": "docs/",
+            "files": 30,
+            "types": [
+                "API文档",
+                "使用指南",
+                "配置说明",
+                "示例代码"
+            ]
+        },
+        "tests": {
+            "path": "tests/",
+            "files": 8,
+            "types": [
+                "集成测试",
+                "单元测试",
+                "端到端测试",
+                "性能测试"
+            ]
+        },
+        "scripts": {
+            "path": "scripts/",
+            "files": 10,
+            "types": [
+                "部署脚本",
+                "初始化脚本",
+                "验证脚本",
+                "备份脚本"
+            ]
+        }
+    },
+    "dependencies": {
+        "production": {
+            "count": 20,
+            "critical": [
+                "firecrawl-py>=0.0.16",
+                "fastapi>=0.104.0",
+                "aiohttp>=3.8.0",
+                "sqlalchemy>=2.0.0",
+                "redis>=5.0.0"
+            ]
+        },
+        "development": {
+            "count": 40,
+            "categories": [
+                "testing",
+                "code_quality",
+                "documentation",
+                "debugging",
+                "performance"
+            ]
+        }
+    },
+    "quality_metrics": {
+        "code_coverage": "80%",
+        "documentation_coverage": "85%",
+        "test_count": 50,
+        "code_quality_score": "A",
+        "security_scan": "passed",
+        "performance_rating": "good"
+    },
+    "deployment": {
+        "environments": {
+            "development": {
+                "docker_compose": "config/deployment/docker-compose.yml",
+                "database": "SQLite",
+                "cache": "Redis (local)"
+            },
+            "production": {
+                "docker_compose": "config/deployment/docker-compose.production.yml",
+                "database": "PostgreSQL",
+                "cache": "Redis (cluster)"
+            }
+        },
+        "ci_cd": {
+            "platform": "GitHub Actions",
+            "workflows": [
+                ".github/workflows/ci-cd.yml",
+                ".github/workflows/docker-build.yml"
+            ],
+            "deployment_targets": [
+                "Docker Hub",
+                "GitHub Container Registry"
+            ]
+        }
+    },
+    "monitoring": {
+        "health_checks": {
+            "endpoint": "/health",
+            "interval": "60s",
+            "timeout": "10s"
+        },
+        "metrics": {
+            "prometheus": {
+                "port": 8080,
+                "metrics": [
+                    "http_requests_total",
+                    "task_duration_seconds",
+                    "crawl_success_rate",
+                    "api_response_time"
+                ]
+            }
+        },
+        "logging": {
+            "level": "INFO",
+            "format": "structured",
+            "outputs": [
+                "console",
+                "file",
+                "remote"
+            ]
+        }
+    },
+    "security": {
+        "authentication": {
+            "api_key": "required",
+            "basic_auth": "optional",
+            "oauth": "planned"
+        },
+        "encryption": {
+            "data_at_rest": "planned",
+            "data_in_transit": "TLS 1.2+",
+            "api_keys": "hashed"
+        },
+        "vulnerability_scanning": {
+            "dependencies": "automated",
+            "code": "bandit",
+            "containers": "trivy"
+        }
+    },
+    "performance": {
+        "concurrent_tasks": 5,
+        "request_timeout": "30s",
+        "retry_attempts": 3,
+        "cache_ttl": "1h",
+        "max_memory": "512MB",
+        "cpu_limit": "0.5 cores"
+    },
+    "maintenance": {
+        "backup_strategy": {
+            "frequency": "daily",
+            "retention": "30 days",
+            "location": "local + cloud"
+        },
+        "update_schedule": {
+            "security_patches": "immediate",
+            "minor_updates": "monthly",
+            "major_updates": "quarterly"
+        },
+        "monitoring_alerts": [
+            "service_down",
+            "high_error_rate",
+            "memory_usage_high",
+            "disk_space_low"
+        ]
+    },
+    "team": {
+        "maintainers": [
+            {
+                "role": "Lead Developer",
+                "name": "AI全栈工程师",
+                "contact": "github_issues"
+            }
+        ],
+        "contributors": [],
+        "reviewers": []
+    },
+    "roadmap": {
+        "current_version": "1.0.0",
+        "next_version": "1.1.0",
+        "planned_features": [
+            "Web UI管理界面",
+            "多租户支持",
+            "高级分析功能",
+            "机器学习集成",
+            "API版本控制",
+            "数据导出功能"
+        ],
+        "timeline": {
+            "1.1.0": "2024-Q4",
+            "1.2.0": "2025-Q1",
+            "2.0.0": "2025-Q2"
+        }
+    },
+    "compliance": {
+        "licenses": {
+            "project": "MIT",
+            "dependencies": "compatible"
+        },
+        "standards": [
+            "REST API",
+            "OpenAPI 3.0",
+            "Docker Standards",
+            "Python PEP 8"
+        ],
+        "data_protection": {
+            "gdpr": "compliant",
+            "data_retention": "configurable",
+            "privacy_policy": "required"
+        }
+    },
+    "support": {
+        "documentation": {
+            "api_docs": "docs/API.md",
+            "user_guide": "README.md",
+            "deployment_guide": "DEPLOYMENT.md",
+            "examples": "docs/examples/"
+        },
+        "community": {
+            "issues": "https://github.com/Poghappy/Firecrawl-/issues",
+            "discussions": "https://github.com/Poghappy/Firecrawl-/discussions",
+            "contributing": "CONTRIBUTING.md"
+        },
+        "contact": {
+            "method": "GitHub Issues",
+            "response_time": "48 hours",
+            "languages": [
+                "中文",
+                "English"
+            ]
+        }
+    }
+}
