@@ -354,7 +354,7 @@ jobs:
     if: always()
     steps:
       - name: 下载所有报告
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v5
         with:
           path: ./reports
       
