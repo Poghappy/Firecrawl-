@@ -1,0 +1,85 @@
+# 开发环境依赖包
+
+# 测试框架
+pytest>=8.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+pytest-benchmark>=4.0.0
+
+# 代码质量
+black>=25.9.0
+ruff>=0.8.0
+isort>=5.13.0
+mypy>=1.18.0
+flake8>=7.3.0
+bandit>=1.7.0
+safety>=3.0.0
+
+# 文档生成
+pdoc>=14.0.0
+mkdocs>=1.5.0
+mkdocs-material>=9.5.0
+
+# 开发工具
+pre-commit>=3.6.0
+watchdog>=4.0.0
+ipython>=8.17.0
+jupyter>=1.0.0
+
+# 调试工具
+pdbpp>=0.10.0
+rich>=13.7.0
+
+# 性能分析
+memory-profiler>=0.61.0
+line-profiler>=4.1.0
+py-spy>=0.3.14
+
+# 类型检查
+types-requests>=2.32.0
+types-redis>=4.6.0
+types-PyYAML>=6.0.12
+
+# 代码覆盖率
+coverage>=7.3.0
+codecov>=2.1.13
+
+# API测试
+httpx>=0.28.0
+fastapi[all]>=0.117.0
+
+# 数据库测试
+pytest-postgresql>=5.0.0
+pytest-redis>=3.0.0
+
+# 环境管理
+python-dotenv>=1.1.0
+click>=8.3.0
+
+# 日志和监控
+structlog>=25.4.0
+prometheus-client>=0.23.0
+
+# 数据验证
+pydantic>=2.11.0
+jsonschema>=4.22.0
+
+# 异步支持
+aiofiles>=24.1.0
+asyncio-mqtt>=0.16.0
+
+# 工具库
+tqdm>=4.67.0
+colorama>=0.4.6
+tabulate>=0.9.0
+
+# 版本控制
+bump2version>=1.0.1
+
+# 许可证检查
+pip-licenses>=4.3.0
+
+# 依赖分析
+pipdeptree>=2.13.0
+pip-audit>=2.6.0

@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  firecrawl-scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    container_name: firecrawl-news-scraper
+    restart: unless-stopped
+    environment:
+      - FIRECRAWL_API_KEY=${FIRECRAWL_API_KEY}
+      - LOG_LEVEL=INFO
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./results:/app/results
+    networks:
+      - firecrawl-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('https://api.firecrawl.dev/v2/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # 可选：添加Redis用于缓存
+  redis:
+    image: redis:7-alpine
+    container_name: firecrawl-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - firecrawl-network
+    command: redis-server --appendonly yes
+
+  # 可选：添加Prometheus监控
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: firecrawl-prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    networks:
+      - firecrawl-network
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+
+  # 可选：添加Grafana可视化
+  grafana:
+    image: grafana/grafana:latest
+    container_name: firecrawl-grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./config/grafana:/etc/grafana/provisioning
+    networks:
+      - firecrawl-network
+
+networks:
+  firecrawl-network:
+    driver: bridge
+
+volumes:
+  redis_data:
+  prometheus_data:
+  grafana_data:

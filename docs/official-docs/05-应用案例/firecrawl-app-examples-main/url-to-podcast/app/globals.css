@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #f97316;
+  --primary-dark: #ea580c;
+  --secondary: #6366f1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --primary: #f97316;
+    --primary-dark: #ea580c;
+    --secondary: #6366f1;
+  }
+}
+
+/* Reset default margins and paddings */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+html.smooth-scroll {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-height, 80px);
+  overscroll-behavior-y: contain; /* Prevents scroll chaining and improves touch scrolling */
+}
+
+/* Prevent content from getting stuck under fixed elements */
+.smooth-scroll * {
+  scroll-margin-top: var(--navbar-height, 80px);
+}
+
+/* Ensure proper scroll behavior for output section */
+#output-section {
+  position: relative;
+  margin-top: 100px; /* Add spacing from form to output section */
+  min-height: 500px; /* Ensure minimum height for output section */
+}
+
+/* Ensure navbar stays on top */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--navbar-bg, white);
+}
+
+/* Podcast Player Waveform Styles */
+.waveform-container {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.waveform-bg,
+.waveform-progress-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.waveform-progress-overlay {
+  background-color: transparent;
+  z-index: 2;
+}
+
+.waveform-bar {
+  flex: 1;
+  background-color: #d1d5db;
+  margin: 0 1px;
+  height: 50%;
+  border-radius: 1px;
+}
+
+.waveform-bar.active {
+  background-color: var(--primary);
+}
+
+.waveform-bar.playing {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* Podcast Player Controls */
+.play-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.play-button:hover {
+  background: var(--primary-dark);
+  transform: scale(1.05);
+}
+
+.podcast-artwork {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

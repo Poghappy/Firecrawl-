@@ -1,0 +1,157 @@
+# Pre-commit hooks configuration for Firecrawl数据采集器
+
+repos:
+  # Python代码格式化
+  - repo: https://github.com/psf/black
+    rev: 25.9.0
+    hooks:
+      - id: black
+        language_version: python3
+        args: [--line-length=88, --target-version=py39]
+
+  # Python代码检查
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.8.4
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+
+  # Python类型检查
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.18.2
+    hooks:
+      - id: mypy
+        additional_dependencies: [types-requests, types-redis, types-PyYAML]
+        args: [--ignore-missing-imports, --no-strict-optional]
+
+  # 导入排序
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: [--profile=black, --multi-line=3]
+
+  # 安全检查
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.10
+    hooks:
+      - id: bandit
+        args: [-r, src/, -f, json, -o, bandit-report.json]
+        exclude: tests/
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+    rev: v1.3.2
+    hooks:
+      - id: python-safety-dependencies-check
+        args: [--full-report]
+
+  # 通用检查
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      # 基础检查
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+      
+      # 文件检查
+      - id: check-docstring-first
+      - id: debug-statements
+      - id: check-ast
+      
+      # 提交信息检查
+      - id: check-commit-msg
+        args: [--pattern=^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .{1,50}]
+      
+      # 文件命名检查
+      - id: check-case-conflict
+      - id: check-merge-conflict
+
+  # 文档检查
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
+        args: [--convention=google]
+        exclude: tests/
+
+  # 依赖检查
+  - repo: https://github.com/jazzband/pip-tools
+    rev: 7.4.1
+    hooks:
+      - id: pip-compile
+        files: requirements\.in$
+        args: [--upgrade]
+
+  # Docker检查
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint-docker
+        args: [--ignore=DL3008, --ignore=DL3009]
+
+  # Markdown检查
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.39.0
+    hooks:
+      - id: markdownlint
+        args: [--fix, --config=.markdownlint.yaml]
+
+  # 许可证检查
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.4
+    hooks:
+      - id: insert-license
+        args: [--license-filepath=.licenses/license_header.txt]
+        exclude: ^(tests/|docs/|\.git/)
+
+# 配置选项
+default_stages: [commit, push]
+fail_fast: false
+minimum_pre_commit_version: "3.0.0"
+
+# 排除文件
+exclude: |
+  (?x)^(
+    \.git/|
+    \.venv/|
+    firecrawl_env/|
+    __pycache__/|
+    \.pytest_cache/|
+    \.coverage|
+    htmlcov/|
+    \.mypy_cache/|
+    \.ruff_cache/|
+    dist/|
+    build/|
+    \.eggs/|
+    \.tox/|
+    venv/|
+    env/|
+    \.env|
+    \.env\..*|
+    \.DS_Store|
+    Thumbs\.db|
+    \.vscode/|
+    \.idea/|
+    \*.pyc|
+    \*.pyo|
+    \*.pyd|
+    \.Python|
+    \.gitignore|
+    \.dockerignore|
+    README\.md|
+    CHANGELOG\.md|
+    LICENSE|
+    \.licenses/|
+    bandit-report\.json
+  )$
+
+# 跳过检查的文件类型
+skip: []

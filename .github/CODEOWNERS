@@ -1,0 +1,38 @@
+# 代码所有者配置
+# 每行指定一个文件模式，后面跟一个或多个所有者
+
+# 全局所有者
+* @dengzhilehappy
+
+# 核心业务逻辑
+/src/core/ @dengzhilehappy
+/src/api/ @dengzhilehappy
+/src/models/ @dengzhilehappy
+
+# 配置文件
+/config/ @dengzhilehappy
+/docker-compose*.yml @dengzhilehappy
+/Dockerfile* @dengzhilehappy
+
+# CI/CD配置
+/.github/workflows/ @dengzhilehappy
+/.github/ @dengzhilehappy
+
+# 文档
+/docs/ @dengzhilehappy
+/README.md @dengzhilehappy
+/CONTRIBUTING.md @dengzhilehappy
+
+# 测试
+/tests/ @dengzhilehappy
+
+# 脚本
+/scripts/ @dengzhilehappy
+
+# 依赖管理
+/requirements*.txt @dengzhilehappy
+/pyproject.toml @dengzhilehappy
+
+# 环境配置
+/.env.example @dengzhilehappy
+/.gitignore @dengzhilehappy

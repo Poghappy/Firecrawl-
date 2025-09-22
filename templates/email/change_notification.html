@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>火鸟门户 - 内容变化通知</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            margin-bottom: 30px;
+        }
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .ai-analysis {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .footer {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            margin-top: 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .timestamp {
+            color: #666;
+            font-size: 14px;
+        }
+        .source-name {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔥 火鸟门户系统</h1>
+            <p>内容变化检测通知</p>
+        </div>
+        
+        <div class="content">
+            <h2>检测到内容变化</h2>
+            
+            <div class="info-box">
+                <h3>📊 变化详情</h3>
+                <p><strong>监控源:</strong> <span class="source-name">{{source_name}}</span></p>
+                <p><strong>URL:</strong> <a href="{{source_url}}">{{source_url}}</a></p>
+                <p><strong>检测时间:</strong> <span class="timestamp">{{timestamp}}</span></p>
+                <p><strong>变化类型:</strong> 内容更新</p>
+            </div>
+            
+            {% if ai_analysis %}
+            <div class="ai-analysis">
+                <h3>🤖 AI 智能分析</h3>
+                <p><strong>重要性评分:</strong> {{ai_analysis.importance_score}}/100</p>
+                <p><strong>内容分类:</strong> {{ai_analysis.category}}</p>
+                <p><strong>内容摘要:</strong> {{ai_analysis.summary}}</p>
+                {% if ai_analysis.keywords %}
+                <p><strong>关键词:</strong> {{ai_analysis.keywords|join(', ')}}</p>
+                {% endif %}
+            </div>
+            {% endif %}
+            
+            <div class="info-box">
+                <h3>📝 内容预览</h3>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 4px; font-family: monospace; font-size: 14px; max-height: 200px; overflow-y: auto;">
+                    {{content_preview}}
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="{{source_url}}" class="btn">查看完整内容</a>
+                <a href="{{dashboard_url}}" class="btn" style="background: #28a745;">监控面板</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>此邮件由火鸟门户系统 Firecrawl Observer 自动发送</p>
+            <p>如需停止接收此类邮件，请联系系统管理员</p>
+            <p>© 2024 火鸟门户系统 - <a href="https://hawaiihub.net">hawaiihub.net</a></p>
+        </div>
+    </div>
+</body>
+</html>
