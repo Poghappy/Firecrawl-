@@ -1,6 +1,6 @@
 # 最小化依赖文件，用于快速测试
 fastapi==0.104.1
-uvicorn[standard]==0.24.0
+uvicorn[standard]==0.37.0
 pydantic==2.5.0
 requests==2.31.0
 python-multipart==0.0.6
