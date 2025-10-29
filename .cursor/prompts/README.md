@@ -17,7 +17,7 @@
 
 ## 📁 文件结构
 
-```
+```text
 .cursor/prompts/
 ├── README.md                    # 本文件
 ├── INDEX.md                     # 提示词索引
@@ -90,7 +90,7 @@ make verify-cursor-config
 
 在对话中明确指定角色：
 
-```
+```text
 @PO 请帮我明确这个功能的业务目标
 @Arch 请设计这个模块的技术架构
 @DEV 请实现这个功能
@@ -100,7 +100,7 @@ make verify-cursor-config
 
 使用阶段命令：
 
-```
+```text
 /user-story    # 启动用户故事阶段
 /prd          # 启动 PRD 阶段
 /tech-design  # 启动技术设计阶段
@@ -127,7 +127,7 @@ make verify-cursor-config
 
 ### 阶段 1: 需求分析
 
-```
+```text
 PO → PM → BA
 ```
 
@@ -137,7 +137,7 @@ PO → PM → BA
 
 ### 阶段 2: 设计规划
 
-```
+```text
 PjM → Arch → LLME
 ```
 
@@ -147,7 +147,7 @@ PjM → Arch → LLME
 
 ### 阶段 3: 开发实现
 
-```
+```text
 DEV → QA → Ops
 ```
 
@@ -157,7 +157,7 @@ DEV → QA → Ops
 
 ### 阶段 4: 文档交付
 
-```
+```text
 TW → Orchestrator
 ```
 
@@ -170,13 +170,13 @@ TW → Orchestrator
 
 1. **变更计划摘要**
 
-   ```
+   ```text
    本次改动要做什么，为什么要做
    ```
 
 2. **影响面分析**
 
-   ```
+   ```text
    - 接口影响: 列出所有受影响的接口
    - 依赖影响: 列出依赖关系变化
    - 风险评估: 识别潜在风险
@@ -184,7 +184,7 @@ TW → Orchestrator
 
 3. **文件树 Diff**
 
-   ```
+   ```diff
    新增:
      + src/new_module.py
      + tests/test_new_module.py
@@ -199,7 +199,7 @@ TW → Orchestrator
 
 4. **DoD 检查清单**
 
-   ```
+   ```markdown
    - [ ] 代码通过 lint 检查
    - [ ] 单元测试通过
    - [ ] 集成测试通过

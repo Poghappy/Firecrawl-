@@ -111,7 +111,7 @@ pytest>=7.4.0                      # 测试框架
 pytest-asyncio>=0.21.0             # 异步测试支持
 pytest-cov>=4.1.0                  # 测试覆盖率
 pytest-mock>=3.12.0                # Mock 工具
-httpx-mock>=0.11.0                 # HTTP Mock
+# httpx-mock>=0.11.0               # HTTP Mock（Python 3.14 暂不支持）
 
 # ============================================
 # 代码质量工具

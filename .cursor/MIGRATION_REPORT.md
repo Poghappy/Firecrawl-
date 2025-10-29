@@ -20,10 +20,10 @@
 
 ### 1. 主配置文件
 
-| 文件                  | 位置       | 状态 | 说明                          |
-| --------------------- | ---------- | ---- | ----------------------------- |
-| ✅ `.cursorrules`     | 项目根目录 | 完成 | Cursor 主规则文件（自动加载） |
-| ✅ `environment.json` | `.cursor/` | 完成 | 环境和工具配置                |
+| 文件                     | 位置       | 状态 | 说明                          |
+| ------------------------ | ---------- | ---- | ----------------------------- |
+| ✅ `.cursorrules`        | 项目根目录 | 完成 | Cursor 主规则文件（自动加载） |
+| ✅ `project-config.json` | `.cursor/` | 完成 | 项目自定义配置                |
 
 ### 2. Prompts 核心文件
 
@@ -92,7 +92,7 @@
 ### 自动生效
 
 1. **`.cursorrules`** - Cursor 启动时自动加载（重启 Cursor 生效）
-2. **`.cursor/environment.json`** - 环境配置自动读取
+2. **`.cursor/project-config.json`** - 项目自定义配置
 3. **`.cursor/prompts/*`** - 提示词库自动索引
 
 ### 手动激活
@@ -137,7 +137,7 @@ make cursor-info
 
 #### 方式 B: 指定角色
 
-```
+```text
 @PO 请明确这个功能的业务目标
 @Arch 请设计系统架构
 @DEV 请实现这个功能
@@ -145,7 +145,7 @@ make cursor-info
 
 #### 方式 C: 工作流命令
 
-```
+```text
 /user-story    # 用户故事阶段
 /prd          # PRD 阶段
 /tech-design  # 技术设计阶段
@@ -180,7 +180,7 @@ make cursor-info
 
 ### 标准开发流程
 
-```
+```text
 1. 需求分析阶段
    PO → PM → BA
    输出: PROJECT_BRIEF.md, USER_STORIES.md, PRD.md
@@ -265,7 +265,7 @@ make release-prep          # 发布准备
 ### 代码行数
 
 - `.cursorrules`: ~170 行
-- `environment.json`: ~150 行
+- `project-config.json`: ~150 行
 - 总 Prompts: ~5000+ 行
 - 工具脚本: ~300 行
 
@@ -304,10 +304,10 @@ make cursor-setup
 
 ### 4. JSON 格式验证
 
-如果修改了 `environment.json`，使用 `jq` 验证：
+如果修改了 `project-config.json`，使用 `jq` 验证：
 
 ```bash
-jq empty .cursor/environment.json
+jq empty .cursor/project-config.json
 ```
 
 ## 📚 相关文档
@@ -335,7 +335,7 @@ jq empty .cursor/environment.json
 
 - [x] 所有文件已复制到 `.cursor/` 目录
 - [x] `.cursorrules` 创建并配置
-- [x] `environment.json` 创建并配置
+- [x] `project-config.json` 创建并配置
 - [x] 工具脚本创建并赋予执行权限
 - [x] Git Hooks 创建并集成
 - [x] Makefile 集成命令

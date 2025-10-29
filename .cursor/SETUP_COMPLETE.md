@@ -12,7 +12,7 @@
 
 ### 配置验证通过率: **97%** (36/37)
 
-```
+```text
 总检查项: 37
 ✅ 通过: 36
 ❌ 失败: 0
@@ -21,20 +21,20 @@
 
 ### 详细验证结果
 
-| 类别          | 检查项                     | 状态    |
-| ------------- | -------------------------- | ------- |
-| **主配置**    | `.cursorrules`             | ✅      |
-| **主配置**    | `.cursor/environment.json` | ✅      |
-| **目录结构**  | `.cursor/`                 | ✅      |
-| **目录结构**  | `.cursor/prompts/`         | ✅      |
-| **目录结构**  | `.cursor/scripts/`         | ✅      |
-| **目录结构**  | `.cursor/hooks/`           | ✅      |
-| **核心文件**  | 7 个核心 Prompts           | ✅ 全部 |
-| **角色文件**  | 9 个角色定义               | ✅ 全部 |
-| **工作流**    | 7 个工作流阶段             | ✅ 全部 |
-| **工具脚本**  | 2 个验证脚本               | ✅ 全部 |
-| **Git Hooks** | 2 个 Hooks                 | ✅ 全部 |
-| **Makefile**  | 4 个集成命令               | ✅ 全部 |
+| 类别          | 检查项                        | 状态    |
+| ------------- | ----------------------------- | ------- |
+| **主配置**    | `.cursorrules`                | ✅      |
+| **主配置**    | `.cursor/project-config.json` | ✅      |
+| **目录结构**  | `.cursor/`                    | ✅      |
+| **目录结构**  | `.cursor/prompts/`            | ✅      |
+| **目录结构**  | `.cursor/scripts/`            | ✅      |
+| **目录结构**  | `.cursor/hooks/`              | ✅      |
+| **核心文件**  | 7 个核心 Prompts              | ✅ 全部 |
+| **角色文件**  | 9 个角色定义                  | ✅ 全部 |
+| **工作流**    | 7 个工作流阶段                | ✅ 全部 |
+| **工具脚本**  | 2 个验证脚本                  | ✅ 全部 |
+| **Git Hooks** | 2 个 Hooks                    | ✅ 全部 |
+| **Makefile**  | 4 个集成命令                  | ✅ 全部 |
 
 ---
 
@@ -55,7 +55,7 @@ Cursor 只在启动时加载 `.cursorrules` 文件，重启后新配置才会生
 
 重启 Cursor 后，在 Cursor 中输入：
 
-```
+```text
 你好，请介绍一下你的角色系统
 ```
 
@@ -67,19 +67,19 @@ Cursor 只在启动时加载 `.cursorrules` 文件，重启后新配置才会生
 
 #### 方式 A: 自动模式
 
-```
+```text
 创建一个用户登录功能，包含API和测试
 ```
 
 #### 方式 B: 指定角色
 
-```
+```text
 @Arch 请设计一个数据采集系统的架构
 ```
 
 #### 方式 C: 工作流
 
-```
+```text
 /prd  # 启动 PRD 阶段
 ```
 
@@ -136,7 +136,7 @@ make help
 
 ### 标准开发流程（自动触发）
 
-```
+```text
 1. 需求阶段 (PO → PM → BA)
    输出: PROJECT_BRIEF.md, USER_STORIES.md, PRD.md
 
@@ -165,14 +165,14 @@ make help
 
 ### 主配置
 
-```
+```text
 /.cursorrules                    # Cursor 主规则（自动加载）
-/.cursor/environment.json        # 环境配置
+/.cursor/project-config.json     # 项目自定义配置
 ```
 
 ### Prompts 系统
 
-```
+```text
 /.cursor/prompts/
 ├── README.md                    # 使用指南
 ├── INDEX.md                     # 索引
@@ -188,7 +188,7 @@ make help
 
 ### 工具和脚本
 
-```
+```text
 /.cursor/scripts/
 ├── verify-prompts.sh            # 配置验证
 └── check-roles.sh               # 角色检查
@@ -206,7 +206,7 @@ make help
 
 直接描述需求，系统会自动协调角色：
 
-```
+```text
 创建一个数据采集功能，需要：
 1. 支持多种数据源
 2. 实现速率限制
@@ -231,7 +231,7 @@ make help
 
 如果只需要特定角色：
 
-```
+```text
 @DEV 请实现一个 REST API
 @QA 请为这个功能编写测试
 ```
@@ -240,7 +240,7 @@ make help
 
 直接进入特定阶段：
 
-```
+```text
 /tech-design   # 跳转到技术设计阶段
 /implement     # 跳转到实现阶段
 /test          # 跳转到测试阶段
@@ -391,7 +391,7 @@ make verify-cursor-config
 
 **试试这个：**
 
-```
+```text
 创建一个用户认证系统，包括注册、登录、权限管理
 ```
 
@@ -404,4 +404,4 @@ make verify-cursor-config
 **验证状态**: ✅ 通过 (97%)
 **下一步**: 重启 Cursor 开始使用
 
-**享受 AI 协作开发的乐趣吧！🚀**
+享受 AI 协作开发的乐趣吧！🚀

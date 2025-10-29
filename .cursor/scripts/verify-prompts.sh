@@ -139,18 +139,18 @@ for workflow in "${workflows[@]}"; do
 done
 echo ""
 
-# 6. 检查环境配置
-log_info "检查环境配置..."
-if [ -f ".cursor/environment.json" ]; then
-    check_file ".cursor/environment.json" "环境配置"
+# 6. 检查项目配置
+log_info "检查项目配置..."
+if [ -f ".cursor/project-config.json" ]; then
+    check_file ".cursor/project-config.json" "项目配置"
 
     # 验证 JSON 格式
     if command -v jq &> /dev/null; then
-        if jq empty .cursor/environment.json 2>/dev/null; then
-            log_success "environment.json 格式正确"
+        if jq empty .cursor/project-config.json 2>/dev/null; then
+            log_success "project-config.json 格式正确"
             PASSED_CHECKS=$((PASSED_CHECKS + 1))
         else
-            log_error "environment.json 格式错误"
+            log_error "project-config.json 格式错误"
             FAILED_CHECKS=$((FAILED_CHECKS + 1))
         fi
         TOTAL_CHECKS=$((TOTAL_CHECKS + 1))
@@ -158,7 +158,7 @@ if [ -f ".cursor/environment.json" ]; then
         log_warning "jq 未安装，跳过 JSON 格式验证"
     fi
 else
-    log_warning "环境配置文件可选 (未找到)"
+    log_warning "项目配置文件可选 (未找到)"
 fi
 echo ""
 

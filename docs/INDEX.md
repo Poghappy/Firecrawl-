@@ -13,9 +13,11 @@
 #### Cursor 配置
 
 - [.cursorrules](../.cursorrules) - **Cursor 主规则文件**（自动加载）
-- [.cursor/environment.json](../.cursor/environment.json) - 环境和工具配置
+- [.cursor/project-config.json](../.cursor/project-config.json) - 项目自定义配置
+- [.cursor/README.md](../.cursor/README.md) - .cursor 目录说明
 - [.cursor/QUICK_START.md](../.cursor/QUICK_START.md) - **3 分钟快速上手**（⭐ 推荐）
 - [.cursor/MIGRATION_REPORT.md](../.cursor/MIGRATION_REPORT.md) - 迁移完成报告
+- [.cursor/SETUP_COMPLETE.md](../.cursor/SETUP_COMPLETE.md) - 设置完成指南
 
 #### Prompts 系统
 

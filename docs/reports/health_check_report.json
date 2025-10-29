@@ -1,0 +1,87 @@
+{
+  "timestamp": "2025-10-29T03:50:02.502335",
+  "version": "v2.1.0",
+  "checks": {
+    "安全检查": {
+      "passed": false,
+      "score": 0,
+      "issues": [
+        "发现硬编码 API Key: /Users/zhiledeng/Movies/Firecrawl数据采集器/tests/quick_test.py",
+        "发现硬编码 API Key: /Users/zhiledeng/Movies/Firecrawl数据采集器/honolulu_rentals/config.py",
+        "发现硬编码 API Key: /Users/zhiledeng/Movies/Firecrawl数据采集器/scripts/test-firecrawl-api.py",
+        "发现硬编码 API Key: /Users/zhiledeng/Movies/Firecrawl数据采集器/scripts/github-actions/verify-github-secrets.py"
+      ],
+      "recommendations": [
+        "使用环境变量存储敏感信息",
+        "添加 pre-commit 钩子检测泄露",
+        "定期审计代码"
+      ]
+    },
+    "代码质量": {
+      "passed": true,
+      "score": 100,
+      "stats": {
+        "total_files": 23,
+        "total_lines": 9277,
+        "type_hint_coverage": "91.3%",
+        "docstring_coverage": "100.0%"
+      },
+      "issues": []
+    },
+    "测试覆盖率": {
+      "passed": false,
+      "score": 30,
+      "stats": {
+        "test_files": 2,
+        "source_files": 23,
+        "estimated_coverage": "~17%"
+      },
+      "issues": [
+        "测试覆盖率过低: ~17%"
+      ],
+      "recommendations": [
+        "目标覆盖率: >80%",
+        "添加单元测试",
+        "添加集成测试"
+      ]
+    },
+    "依赖检查": {
+      "passed": true,
+      "score": 100,
+      "stats": {
+        "total_dependencies": 56,
+        "pinned_versions": "100%"
+      },
+      "issues": []
+    },
+    "配置完整性": {
+      "passed": true,
+      "score": 100,
+      "issues": []
+    },
+    "文档完整性": {
+      "passed": true,
+      "score": 100,
+      "issues": []
+    },
+    "代码规范": {
+      "passed": true,
+      "score": 70,
+      "issues": [
+        "缺少代码格式化配置"
+      ]
+    },
+    "性能指标": {
+      "passed": false,
+      "score": 50,
+      "stats": {
+        "async_usage": "39%"
+      },
+      "issues": [
+        "异步代码使用率低: 39%"
+      ]
+    }
+  },
+  "overall_health": "good",
+  "score": 68
+}

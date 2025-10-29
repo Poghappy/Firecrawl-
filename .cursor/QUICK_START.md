@@ -11,7 +11,7 @@ make cursor-setup
 
 输出示例：
 
-```
+```text
 🚀 设置 Cursor Prompts 系统...
 ✅ Cursor Prompts 系统设置完成
 请重启 Cursor 以加载新配置
@@ -53,7 +53,7 @@ make check-roles
 
 在 Cursor 中输入：
 
-```
+```text
 请帮我创建一个用户登录功能
 ```
 
@@ -71,7 +71,7 @@ make check-roles
 
 ### 示例 2: 指定角色
 
-```
+```text
 @Arch 请设计一个数据采集系统的架构
 @DEV 请实现这个功能
 @QA 请为这个模块编写测试
@@ -79,7 +79,7 @@ make check-roles
 
 ### 示例 3: 工作流命令
 
-```
+```text
 /user-story    # 启动用户故事阶段
 /prd          # 启动 PRD 阶段
 /tech-design  # 启动技术设计阶段
@@ -154,7 +154,7 @@ chmod +x .cursor/hooks/*
 
 **Q: 角色不响应？**
 
-```
+```bash
 # 确认已重启 Cursor
 # 检查 .cursorrules 文件存在
 ls -la .cursorrules
@@ -166,7 +166,7 @@ ls -la .cursorrules
 
 **示例：**
 
-```
+```text
 创建一个数据采集API，要求：
 1. 支持多种数据源
 2. 实现速率限制
