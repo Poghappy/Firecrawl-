@@ -1,0 +1,64 @@
+# Firecrawl 数据采集器 - Cursor AI 规则
+
+## 项目概述
+
+基于 Python 3.9+、FastAPI、PostgreSQL、Redis、Docker 的数据采集系统。
+
+## 核心原则
+
+- 始终使用简体中文回复
+- 优先使用 MCP 工具执行任务
+- 参考项目中的 firecrawl-docs 官方文档
+- 小步快跑：每次改动 ≤5 个文件
+- 先读后写：执行前先读取相关文件和 project_status.md
+- 立即验证：每次改动后运行测试
+
+## 代码规范
+
+### Python
+
+- 使用类型提示、文档字符串、异常处理、日志记录
+- 导入顺序：标准库 → 第三方库 → 本地模块
+- 命名：snake_case (变量/函数)、PascalCase (类)、UPPER_SNAKE_CASE (常量)
+- 遵循 PEP 8，使用 Black 格式化，isort 排序
+- 优先使用异步编程（async/await）
+
+### 测试
+
+- 测试覆盖率 >80%
+- 使用 pytest + pytest-asyncio
+- 模拟外部依赖，测试正常和异常场景
+
+## 安全要求
+
+- 敏感信息使用环境变量（.env）
+- 不提交真实 API 密钥
+- 提供 .env.example 模板
+- 实施 API 认证和速率限制
+
+## Git 提交规范
+
+feat: 新功能 | fix: Bug 修复 | docs: 文档 | style: 格式 | refactor: 重构 | test: 测试 | chore: 构建
+
+## 工作流程
+
+1. 分析任务并拆分子任务
+2. 查看 project_status.md 了解现状
+3. 小步快跑，增量实现
+4. 运行测试验证
+5. 更新文档和状态
+6. 规范提交
+
+## 禁止事项
+
+- ❌ 硬编码 API 密钥和密码
+- ❌ 一次性大规模重写
+- ❌ 跳过测试直接提交
+- ❌ 使用中文文件名
+
+## 关键目录
+
+- `src/`: 核心代码
+- `tests/`: 测试代码
+- `docs/official-docs/`: Firecrawl 官方文档
+- `project_status.md`: 项目状态

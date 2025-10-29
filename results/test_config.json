@@ -1,0 +1,23 @@
+{
+  "api": {
+    "firecrawl_api_key": "test_key_1234567890"
+  },
+  "crawl": {
+    "default_limit": 10,
+    "timeout": 30,
+    "delay": 1
+  },
+  "notification": {
+    "webhook_url": "https://example.com/webhook",
+    "enabled": true
+  },
+  "security": {
+    "rate_limit": 100,
+    "max_concurrent": 5
+  },
+  "database": {
+    "url": "sqlite:///test_firecrawl.db",
+    "pool_size": 5,
+    "max_overflow": 10
+  }
+}

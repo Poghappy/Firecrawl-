@@ -1,0 +1,189 @@
+# Firecrawl 数据采集器 - 无关文件清单
+# 生成日期: 2025-10-29
+# 说明: 此文件列出所有建议删除或移动的文件/目录
+
+========================================
+🔴 高优先级 - 立即删除
+========================================
+
+[虚拟环境 - 150-200 MB]
+firecrawl_env/
+
+[空目录]
+components/
+
+[压缩包文件 - 20-50 MB]
+docs/archive.zip
+docs/官方文档.zip
+scripts/archive.zip
+tests/archive.zip
+prompts/archive.zip
+
+[数据库文件 - 从 Git 移除但保留本地]
+data/firecrawl.db
+data/feedback.db
+results/firecrawl_jobs.db
+results/archive/test_firecrawl.db
+
+========================================
+🟡 中优先级 - 建议删除
+========================================
+
+[官方示例代码 - 50-100 MB, 800+ 文件]
+docs/official-docs/05-应用案例/firecrawl-app-examples-main/
+  ├── ai-resume-job-matching/
+  ├── automated_price_tracking/
+  ├── blog-thread-converter/
+  ├── change-detection-tutorial/
+  ├── claude-3.7-job-matcher/
+  ├── company-data-scraper/
+  ├── content-optimizer/
+  ├── crewai_chatgpt_clone/
+  ├── custom-fine-tuning-dataset/
+  ├── deep-job-researcher/
+  ├── deep-research-endpoint/
+  ├── deepseek-fine-tune/
+  ├── deepseek-rag/
+  ├── deepseek-v3-agi-newsletter/
+  ├── deepseek-v3-trend-finder/
+  ├── gemini-2-5-agi-newsletter/
+  ├── gemini-2-5-pro-trend-finder/
+  ├── gemini-2.5-trend-finder/
+  ├── gemma-custom-fine-tune/
+  ├── google-adk-tutorial/
+  ├── hero-optimizer/
+  ├── llama4-fine-tuning/
+  ├── local-website-chatbot/
+  ├── logo-tree-builder/
+  ├── mcp-document-reader/
+  ├── mistral-small-3.1-trend-finder/
+  ├── os-watch/
+  ├── post_predictor/
+  ├── review-analyzer/
+  ├── roastmywebsite-example-app/
+  ├── search-competitor-analysis/
+  ├── search-email-to-company-intel/
+  ├── search-to-mindmap/
+  ├── search-to-report/
+  ├── search-to-slides/
+  ├── seo_generator_flow/
+  ├── url-to-image-imagen4-gemini-flash/
+  ├── url-to-podcast/
+  └── website-to-agent/
+
+[AI 提示词系统 - 1-2 MB, 20+ 文件]
+prompts/
+  ├── README.md
+  ├── system_prompt.md
+  ├── orchestrator.md
+  ├── guardrails.md
+  ├── handoff_format.md
+  ├── project_config.md
+  ├── 00_guidelines.md
+  ├── 10_user_story.md
+  ├── 20_prd.md
+  ├── 30_task_breakdown.md
+  ├── 40_tech_design.md
+  ├── 50_impl.md
+  ├── 60_test.md
+  ├── 70_iteration.md
+  ├── archive.zip
+  ├── roles/01_product_owner.md
+  ├── roles/02_product_manager.md
+  ├── roles/03_business_analyst.md
+  ├── roles/05_architect.md
+  ├── roles/06_llm_engineer.md
+  ├── roles/07_developer.md
+  ├── roles/08_qa_engineer.md
+  ├── roles/09_devops.md
+  ├── roles/10_technical_writer.md
+  ├── stages/01_user_stories.md
+  └── stages/02_prd.md
+
+[博客教程文档 - 移动到 docs/blog/]
+docs/official-docs/02_Kimi_K2旅行应用构建教程.md
+docs/official-docs/03_2025年最佳AI代理开源框架.md
+docs/official-docs/04_Engage_Together反人口贩卖资源映射案例.md
+docs/official-docs/05_Grok4医疗AI应用构建教程.md
+docs/official-docs/06_网络爬虫工具Top10指南.md
+
+[GitHub Actions 脚本 - 归档到 scripts/archive/]
+scripts/github-actions/check-github-actions.sh
+scripts/github-actions/fix-github-actions-complete.sh
+scripts/github-actions/fix-github-actions.py
+scripts/github-actions/fix-github-actions.sh
+scripts/github-actions/github-init.sh
+scripts/github-actions/verify-github-config.py
+scripts/github-actions/verify-github-secrets.py
+
+[文档整理元文档 - 移动到 docs/maintenance/]
+docs/official-docs/APPROVE_Firecrawl文档整理.md
+docs/official-docs/DESIGN_Firecrawl文档整理.md
+docs/official-docs/REQUIREMENTS_Firecrawl文档整理.md
+docs/official-docs/TASK_Firecrawl文档整理.md
+
+========================================
+🟢 低优先级 - 可选删除
+========================================
+
+[重复配置文件]
+results/config_example.json
+results/config.json
+results/test_config.json
+
+[过时报告文件 - 归档到 docs/reports/archive/]
+docs/reports/feedback-report-20250921_162041.md
+docs/reports/test_report_toutiao.md
+
+[JSON 报告文件 - 添加到 .gitignore]
+results/test_report.json
+docs/reports/project_health_report.json
+
+[可能重复的项目文档 - 需检查]
+docs/PROJECT_BRIEF.md
+docs/PROJECT_INDEX.md
+docs/PROJECT_METADATA.json
+
+[Archive 子目录 - 需检查]
+results/archive/
+results/archive/backup/
+
+========================================
+📊 统计汇总
+========================================
+
+总文件数量: 840+ 个
+总占用空间: 226-362 MB
+
+分类统计:
+- 虚拟环境: 1 目录, 150-200 MB
+- 示例代码: 800+ 文件, 50-100 MB
+- 压缩包: 5 文件, 20-50 MB
+- AI 提示词: 20+ 文件, 1-2 MB
+- 其他: 15+ 文件, 5-10 MB
+
+========================================
+📝 执行建议
+========================================
+
+自动化清理（推荐）:
+  ./scripts/cleanup-project.sh
+
+手动清理参考:
+  - 完整建议: docs/maintenance/PROJECT_CLEANUP_RECOMMENDATIONS_2025-10-29.md
+  - 检查清单: CLEANUP_CHECKLIST.md
+  - 快速指南: CLEANUP_GUIDE_QUICK.md
+  - 总结报告: docs/maintenance/CLEANUP_ANALYSIS_SUMMARY.md
+
+========================================
+⚠️  重要提示
+========================================
+
+1. 清理前请创建备份
+2. 数据库文件本地保留，只从 Git 移除
+3. 清理后需重新创建虚拟环境
+4. 清理后请运行测试验证功能
+5. 确认无误后提交 Git commit
+
+========================================
+# 文件结束
