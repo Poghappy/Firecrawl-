@@ -1,0 +1,97 @@
+# 招聘信息智能体配置
+# 业务场景：Aloha 招聘网
+# 使用端点：Batch Scrape + JSON Mode
+
+# 智能体基础配置
+agent:
+  name: "招聘信息智能体"
+  type: "recruitment"
+  description: "采集招聘网站职位信息"
+  enabled: true
+
+# API 配置
+api:
+  endpoint: "batch_scrape"  # 批量抓取已知职位URL
+  timeout: 300
+  max_retries: 3
+  retry_delay: 2.0
+
+# Firecrawl 参数
+firecrawl:
+  # 性能优化
+  max_age: 3600000  # 1小时缓存
+  proxy: "basic"
+
+  # 输出格式 - 重点使用结构化提取
+  formats:
+    - type: "json"
+      schema: "JobPosting"  # 使用 src/models/recruitment.py 模型
+
+  # 内容过滤
+  only_main_content: true
+  include_tags: ["job", "position", "requirement"]
+  exclude_tags: ["nav", "footer", "related-jobs"]
+
+# Batch Scrape 配置
+batch:
+  max_urls_per_batch: 50  # 每批50个URL
+  parallel_batches: 3  # 同时处理3批
+
+# 数据源配置
+sources:
+  - name: "Indeed"
+    url: "https://www.indeed.com/jobs?q=software&l=Hawaii"
+    category: "综合招聘"
+    priority: 1
+    enabled: true
+
+  - name: "LinkedIn Jobs"
+    url: "https://www.linkedin.com/jobs/search/?location=Hawaii"
+    category: "专业招聘"
+    priority: 1
+    enabled: true
+
+  - name: "Glassdoor"
+    url: "https://www.glassdoor.com/Job/hawaii-jobs-SRCH_IL.0,6_IS2238.htm"
+    category: "综合招聘"
+    priority: 2
+    enabled: true
+
+# URL 发现配置
+url_discovery:
+  enabled: true
+  method: "map"  # 先用 Map 发现职位URL
+  filters:
+    - "/job/"
+    - "/position/"
+    - "/career/"
+
+# 并发控制
+concurrency:
+  max_concurrent: 10
+  batch_size: 50
+  queue_size: 200
+
+# 数据处理
+processing:
+  enable_dedup: true
+  auto_category: true
+  extract_salary: true  # 智能提取薪资范围
+  extract_skills: true  # 提取技能要求
+
+# 调度配置
+schedule:
+  enabled: true
+  cron: "0 9 * * *"  # 每天早上9点执行
+  timezone: "Pacific/Honolulu"
+
+# 存储配置
+storage:
+  output_dir: "./output/recruitment"
+  backup_enabled: true
+  formats: ["json", "csv"]
+
+# 成本控制
+cost:
+  daily_budget: 1500  # credits
+  alert_threshold: 1200

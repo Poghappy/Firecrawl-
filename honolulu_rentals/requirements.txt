@@ -1,0 +1,26 @@
+# 檀香山租房信息采集系统 - 依赖包
+
+# Firecrawl SDK
+firecrawl-py>=1.0.0
+
+# 数据验证
+pydantic>=2.0.0
+
+# 环境变量管理
+python-dotenv>=1.0.0
+
+# Excel 导出
+openpyxl>=3.1.0
+xlsxwriter>=3.1.0
+
+# HTTP 请求（Firecrawl 内部使用）
+requests>=2.31.0
+
+# 定时任务
+schedule>=1.2.0
+
+# 时区处理
+pytz>=2023.3
+
+# 日志增强（可选）
+colorlog>=6.7.0

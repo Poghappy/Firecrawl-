@@ -210,6 +210,33 @@ info: ## 显示环境信息
 	@echo "虚拟环境: $$(which python)"
 	@echo "依赖数量: $$(pip list | wc -l)"
 
+# Cursor AI Prompts 管理
+verify-cursor-config: ## 验证 Cursor Prompts 配置
+	@echo "🤖 验证 Cursor Prompts 配置..."
+	@bash .cursor/scripts/verify-prompts.sh
+	@echo "✅ Cursor配置验证完成"
+
+check-roles: ## 检查角色文件完整性
+	@echo "👥 检查角色文件..."
+	@bash .cursor/scripts/check-roles.sh
+	@echo "✅ 角色检查完成"
+
+cursor-setup: ## 设置 Cursor Prompts 系统
+	@echo "🚀 设置 Cursor Prompts 系统..."
+	@chmod +x .cursor/scripts/*.sh
+	@chmod +x .cursor/hooks/*
+	@bash .cursor/scripts/verify-prompts.sh
+	@echo "✅ Cursor Prompts 系统设置完成"
+	@echo "请重启 Cursor 以加载新配置"
+
+cursor-info: ## 显示 Cursor配置信息
+	@echo "📋 Cursor AI 配置信息:"
+	@echo "主规则文件: .cursorrules"
+	@echo "Prompts目录: .cursor/prompts/"
+	@echo "环境配置: .cursor/environment.json"
+	@echo "可用角色: PO PM BA PjM Arch LLME DEV QA Ops TW"
+	@echo "工作流阶段: 7个标准阶段"
+
 # 帮助信息
 help-setup: ## 显示设置帮助
 	@echo "🔧 环境设置步骤:"
@@ -217,4 +244,5 @@ help-setup: ## 显示设置帮助
 	@echo "2. source firecrawl_env/bin/activate  # 激活虚拟环境"
 	@echo "3. make install   # 安装依赖"
 	@echo "4. make dev       # 设置开发环境"
-	@echo "5. make run       # 启动服务"
+	@echo "5. make cursor-setup  # 设置 Cursor AI"
+	@echo "6. make run       # 启动服务"

@@ -133,3 +133,89 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ============================================
+# 项目初始化添加 (2025-10-29)
+# ============================================
+
+# 环境变量文件（包含敏感信息）
+.env
+.env.local
+.env.*.local
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# 虚拟环境
+venv/
+ENV/
+env/
+.venv/
+
+# IDE 配置
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# 测试和覆盖率
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+*.cover
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+data/*.db
+
+# 日志文件
+logs/
+*.log
+
+# 临时文件
+temp/
+tmp/
+*.tmp
+
+# 输出和结果文件
+output/
+results/
+*.json.bak
+*.csv.bak
+
+# 备份文件
+backups/
+*.bak
+*.backup
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 压缩文件
+*.zip
+*.tar.gz
+*.rar
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# 项目特定
+cache/
+.cache/
+screenshots/

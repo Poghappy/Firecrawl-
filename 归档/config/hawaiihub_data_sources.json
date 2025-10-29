@@ -1,0 +1,1056 @@
+{
+  "project_info": {
+    "name": "HawaiiHub Data Sources Configuration",
+    "version": "1.0.0",
+    "created_date": "2025-10-28",
+    "description": "优质数据源配置 - 为HawaiiHub各模块提供10个经过验证的信息源",
+    "total_sources": 100,
+    "collection_method": "Firecrawl Search API",
+    "target_audience": "夏威夷华人社区"
+  },
+
+  "modules": {
+    "1_rental_housing": {
+      "name": "租房信息模块",
+      "description": "檀香山及周边地区租房、公寓、住宅信息",
+      "priority": "P0",
+      "update_frequency": "daily",
+      "sources": [
+        {
+          "id": "rental_001",
+          "name": "Zillow Chinatown Honolulu",
+          "url": "https://www.zillow.com/chinatown-honolulu-hi/apartments/",
+          "description": "44个唐人街租房信息，支持详细筛选",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "rental_002",
+          "name": "Apartments.com Chinatown",
+          "url": "https://www.apartments.com/malls/hi/honolulu/chinatown-cultural-plaza/m3db0yj/",
+          "description": "1602个唐人街文化广场附近公寓",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "rental_003",
+          "name": "Our Kakaako - The Flats",
+          "url": "https://ourkakaako.com/the-flats-at-puunui/",
+          "description": "88个单元，Studio到3居室",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "rental_004",
+          "name": "RentCafe Chinatown",
+          "url": "https://www.rentcafe.com/apartments-for-rent/us/hi/honolulu/chinatown/",
+          "description": "唐人街公寓在线申请",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "rental_005",
+          "name": "Hocking Building",
+          "url": "https://www.hockingbuilding.com/",
+          "description": "历史建筑，40个单元，2024年全新装修",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "rental_006",
+          "name": "Trulia Chinatown",
+          "url": "https://www.trulia.com/for_rent/Honolulu,Chinatown,HI/APARTMENT_COMMUNITY_type/with-utilitiesIncluded/",
+          "description": "936个公寓社区，包含水电费",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "rental_007",
+          "name": "Yelp Condos Chinatown",
+          "url": "https://m.yelp.com/search?find_desc=Condos+for+Rent&find_loc=Chinatown%2C+Honolulu%2C+HI",
+          "description": "唐人街共管公寓租赁信息",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "rental_008",
+          "name": "Apartments.com Individual",
+          "url": "https://www.apartments.com/2057-10th-ave-honolulu-hi/gfnhbxx/",
+          "description": "个人房间出租信息",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "rental_009",
+          "name": "EAH Housing - Kukui Tower",
+          "url": "https://www.eahhousing.org/apartments/kukui-tower/",
+          "description": "32层高层建筑，唐人街边缘",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "rental_010",
+          "name": "Kuhio Park Terrace",
+          "url": "https://www.liveatkuhio.com/",
+          "description": "檀香山公寓租赁，(833) 875-7852",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "weekly"
+        }
+      ]
+    },
+
+    "2_dining_restaurants": {
+      "name": "餐饮美食模块",
+      "description": "中餐、亚洲餐厅、美食指南",
+      "priority": "P0",
+      "update_frequency": "weekly",
+      "sources": [
+        {
+          "id": "dining_001",
+          "name": "TripAdvisor Chinese Restaurants",
+          "url": "https://www.tripadvisor.com/Restaurants-g60982-c11-Honolulu_Oahu_Hawaii.html",
+          "description": "檀香山TOP 10中餐馆，24,509条评论",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "dining_002",
+          "name": "Yelp Chinese Food",
+          "url": "https://m.yelp.com/search?find_desc=Best+Chinese+Food&find_loc=Honolulu%2C+HI",
+          "description": "Jade Dynasty、Kirin等热门中餐厅",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "dining_003",
+          "name": "Honolulu Magazine Chinese Guide",
+          "url": "https://www.honolulumagazine.com/ultimate-guide-chinese-food/",
+          "description": "中餐终极指南，粤菜到各地方菜系",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "dining_004",
+          "name": "Reddit Hawaii Chinese Dishes",
+          "url": "https://www.reddit.com/r/Hawaii/comments/1htv61t/best_chinese_dishes_on_honolulu_that_you_cant/",
+          "description": "本地人推荐的独特中餐",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "dining_005",
+          "name": "OpenTable Asian Restaurants",
+          "url": "https://www.opentable.com/cuisine/best-asian-restaurants-honolulu-hi",
+          "description": "20家最佳亚洲餐厅在线订座",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "dining_006",
+          "name": "P.F. Chang's Honolulu",
+          "url": "https://locations.pfchangs.com/hi/honolulu/2201-kalakaua-ave.html",
+          "description": "连锁中餐，蒙古、泰国、韩国等泛亚菜系",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "dining_007",
+          "name": "Au's Garden",
+          "url": "https://www.ausgardenhawaii.com/",
+          "description": "夏威夷最佳中餐，烤鸭、炒饭、牛肉西兰花",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "dining_008",
+          "name": "Happy Days Chinese Seafood",
+          "url": "https://happydayshawaii.com/",
+          "description": "中式海鲜餐厅，温馨氛围",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "dining_009",
+          "name": "Quora Chinese Restaurants",
+          "url": "https://www.quora.com/Where-can-I-get-the-best-Chinese-food-in-Honolulu?top_ans=9449092",
+          "description": "本地人推荐，Side Street Inn等",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "dining_010",
+          "name": "Kirin Restaurant",
+          "url": "https://kirinrestauranthawaii.com/",
+          "description": "威基基中餐，台山蟹和特色排骨",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "weekly"
+        }
+      ]
+    },
+
+    "3_jobs_employment": {
+      "name": "就业招聘模块",
+      "description": "工作机会、职业发展、中文岗位",
+      "priority": "P1",
+      "update_frequency": "daily",
+      "sources": [
+        {
+          "id": "jobs_001",
+          "name": "Indeed Chinese Jobs Honolulu",
+          "url": "https://www.indeed.com/q-chinese-l-honolulu,-hi-jobs.html",
+          "description": "63个中文相关职位",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "jobs_002",
+          "name": "Indeed Chinese Jobs Hawaii",
+          "url": "https://www.indeed.com/q-chinese-l-hawaii-jobs.html",
+          "description": "49个夏威夷中文职位",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "jobs_003",
+          "name": "ZipRecruiter Chinese Honolulu",
+          "url": "https://www.ziprecruiter.com/Jobs/Chinese/-in-Honolulu,HI",
+          "description": "$16-31/小时，30个职位",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "jobs_004",
+          "name": "LinkedIn Chinese Jobs Hawaii",
+          "url": "https://www.linkedin.com/jobs/chinese-jobs-hawaii",
+          "description": "213个职位，每日更新",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "jobs_005",
+          "name": "Glassdoor Chinese Honolulu",
+          "url": "https://www.glassdoor.com/Job/honolulu-chinese-jobs-SRCH_IL.0,8_IC1140656_KO9,16.htm",
+          "description": "64个职位，含公司评分和薪资",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "jobs_006",
+          "name": "ZipRecruiter Mandarin Speaking",
+          "url": "https://www.ziprecruiter.com/Jobs/Mandarin-Speaking/--in-Hawaii",
+          "description": "10个说普通话职位",
+          "data_quality": "medium",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "jobs_007",
+          "name": "SimplyHired Chinese",
+          "url": "https://www.simplyhired.com/search?q=chinese&l=honolulu%2C+hi",
+          "description": "74个中文相关职位",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "jobs_008",
+          "name": "LinkedIn Chinese Honolulu",
+          "url": "https://www.linkedin.com/jobs/chinese-jobs-honolulu-hi?trk=public_profile_jserp",
+          "description": "160个职位",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "jobs_009",
+          "name": "Glassdoor Mandarin Chinese",
+          "url": "https://www.glassdoor.com/Job/honolulu-mandarin-chinese-jobs-SRCH_IL.0,8_IC1140656_KO9,25.htm",
+          "description": "31个普通话职位",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "jobs_010",
+          "name": "Government Jobs Library Tech",
+          "url": "https://www.governmentjobs.com/jobs/4940169-0/library-technician-v-shift-work-chinese-speaking-downtown-oahu",
+          "description": "政府职位，需要中文（粤语/普通话）",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "weekly"
+        }
+      ]
+    },
+
+    "4_community_events": {
+      "name": "社区活动模块",
+      "description": "华人社区活动、文化节庆、聚会",
+      "priority": "P1",
+      "update_frequency": "weekly",
+      "sources": [
+        {
+          "id": "events_001",
+          "name": "Chinatown Cultural Plaza Activities",
+          "url": "https://chinatownculturalplaza.com/activities-and-events/",
+          "description": "长期课程：舞蹈、太极、卡拉OK、功夫",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "events_002",
+          "name": "Chinese Chamber Events",
+          "url": "https://www.chinesechamber.com/events",
+          "description": "会员大会、Rail Transit更新、假日派对",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "events_003",
+          "name": "Go Hawaii Events Festivals",
+          "url": "https://www.gohawaii.com/trip-planning/events-festivals",
+          "description": "夏威夷年度节日，包括中国龙舞、民族节",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "events_004",
+          "name": "Chinatown Cultural Plaza Main",
+          "url": "https://chinatownculturalplaza.com/",
+          "description": "华埠文化广场，传统中国活动中心",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "events_005",
+          "name": "Chinatown Festival Parade",
+          "url": "https://chinatown808.com/events/chinatown-festival-parade/",
+          "description": "2025年1月25日农历新年游行",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "events_006",
+          "name": "Polynesian Cultural Center",
+          "url": "https://www.polynesia.com/",
+          "description": "欧胡岛#1景点，波利尼西亚文化体验",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "events_007",
+          "name": "Chinatown Plaza Facebook",
+          "url": "https://www.facebook.com/groups/777790091018109/posts/1290666923063754/",
+          "description": "社区活动信息和更新",
+          "data_quality": "medium",
+          "chinese_friendly": true,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "events_008",
+          "name": "Creative City Oahu",
+          "url": "https://www.thecreativecity.org/events",
+          "description": "艺术活动、草坪游戏、寻宝游戏",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "events_009",
+          "name": "Chinese Chamber Main",
+          "url": "https://www.chinesechamber.com/",
+          "description": "研讨会、教育项目、文化活动、社交",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "events_010",
+          "name": "Eventbrite Chinatown",
+          "url": "https://www.eventbrite.com/b/hi--urban-honolulu--chinatown/community/",
+          "description": "唐人街社区活动票务平台",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "weekly"
+        }
+      ]
+    },
+
+    "5_news_media": {
+      "name": "新闻资讯模块",
+      "description": "本地新闻、中文媒体、时事资讯",
+      "priority": "P0",
+      "update_frequency": "hourly",
+      "sources": [
+        {
+          "id": "news_001",
+          "name": "Hawaii Chinese News",
+          "url": "https://www.yelp.com/biz/hawaii-chinese-news-honolulu",
+          "description": "90 N King St. Ste 202, (808) 524-0142",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "news_002",
+          "name": "Hawaiian Chinese News Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Hawaiian_Chinese_News",
+          "description": "历史和背景信息",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "news_003",
+          "name": "Honolulu Star-Advertiser",
+          "url": "https://www.staradvertiser.com/",
+          "description": "夏威夷顶级新闻源，突发新闻",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "hourly"
+        },
+        {
+          "id": "news_004",
+          "name": "World Journal Chinese Newspaper",
+          "url": "https://www.yelp.com/biz/world-journal-chinese-newspaper-honolulu",
+          "description": "100 N Beretania St, (808) 524-8886",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "news_005",
+          "name": "West Hawaii Today",
+          "url": "https://www.westhawaiitoday.com/",
+          "description": "大岛西侧新闻报道",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "news_006",
+          "name": "People's Daily",
+          "url": "https://guides.library.manoa.hawaii.edu/peoples-daily",
+          "description": "人民日报，中国政府政策信息",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "daily"
+        },
+        {
+          "id": "news_007",
+          "name": "China Daily",
+          "url": "https://www.chinadaily.com.cn/",
+          "description": "中国最大英文门户网站",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "hourly"
+        },
+        {
+          "id": "news_008",
+          "name": "China Quarterly Local News",
+          "url": "https://www.cambridge.org/core/journals/china-quarterly/article/chinas-local-news-media/47A148A266F538C011412FD2101EBB68",
+          "description": "中国地方新闻媒体研究",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "news_009",
+          "name": "Media in Honolulu Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Media_in_Honolulu",
+          "description": "檀香山媒体概况",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "news_010",
+          "name": "Chinese Press in North America",
+          "url": "https://himmarklai.org/wordpress/wp-content/uploads/Short-History-Media.doc",
+          "description": "北美华文媒体历史",
+          "data_quality": "low",
+          "chinese_friendly": true,
+          "scrape_frequency": "yearly"
+        }
+      ]
+    },
+
+    "6_tourism_attractions": {
+      "name": "旅游景点模块",
+      "description": "观光景点、旅游指南、热门活动",
+      "priority": "P1",
+      "update_frequency": "weekly",
+      "sources": [
+        {
+          "id": "tourism_001",
+          "name": "Next Stop Hawaii Best Things Oahu",
+          "url": "https://nextstophawaii.com/best-things-to-do-oahu/",
+          "description": "7件必做之事，威基基海滩等",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "tourism_002",
+          "name": "101 Best Things Oahu",
+          "url": "https://noahlangphotography.com/blog/best-things-to-do-oahu-hawaii",
+          "description": "101个最佳活动，含徒步和历史遗迹",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "tourism_003",
+          "name": "17 Free Things Oahu",
+          "url": "https://www.guidedbydestiny.com/free-things-to-do-in-oahu/",
+          "description": "免费活动：Lanikai海滩、海龟海滩",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "tourism_004",
+          "name": "Go Hawaii Oahu Things to Do",
+          "url": "https://www.gohawaii.com/islands/oahu/things-to-do",
+          "description": "官方旅游指南，海滩、徒步、冲浪",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "tourism_005",
+          "name": "TripAdvisor Oahu Top 15",
+          "url": "https://www.tripadvisor.com/Attractions-g29222-Activities-Oahu_Hawaii.html",
+          "description": "钻石头、珍珠港等TOP15景点",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "tourism_006",
+          "name": "Go City Oahu 40+ Attractions",
+          "url": "https://gocity.com/en/oahu/attractions",
+          "description": "通票访问40+景点，节省费用",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "tourism_007",
+          "name": "Oahu in a Weekend YouTube",
+          "url": "https://www.youtube.com/watch?v=QM9LUvjLWRA",
+          "description": "周末TOP7必做，视频指南",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "quarterly"
+        },
+        {
+          "id": "tourism_008",
+          "name": "10 Things First Timers Oahu",
+          "url": "https://www.thetravelpockets.com/new-blog/what-to-do-in-oahu-for-first-timers",
+          "description": "首次访客指南，Kailua海滩等",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "tourism_009",
+          "name": "Reddit Oahu Tourist Attractions",
+          "url": "https://www.reddit.com/r/VisitingHawaii/comments/1eqsdb4/oahu_in_your_opinion_which_populartouristy/",
+          "description": "Reddit用户推荐，避坑指南",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "tourism_010",
+          "name": "Ready Set Jet Set Oahu Guide",
+          "url": "https://readysetjetset.net/quick-guide-to-oahu-hawaii/",
+          "description": "快速指南：吃住玩全攻略",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        }
+      ]
+    },
+
+    "7_education": {
+      "name": "教育资源模块",
+      "description": "学校、中文教育、语言学习",
+      "priority": "P1",
+      "update_frequency": "monthly",
+      "sources": [
+        {
+          "id": "education_001",
+          "name": "Chinese Language Learning Center",
+          "url": "http://cllchi.com/",
+          "description": "儿童项目（3-12岁）、普通话浸入营",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "education_002",
+          "name": "Chinese Language Education Assoc",
+          "url": "https://www.cleah.org/schools/",
+          "description": "夏威夷中文教育协会，学校名录",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "education_003",
+          "name": "Maryknoll Mandarin Immersion",
+          "url": "https://www.maryknollschool.org/academics/mandarin-immersion-program",
+          "description": "K-7普通话浸入式项目，50/50模式",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "education_004",
+          "name": "Yelp Chinese Schools",
+          "url": "https://www.yelp.com/search?find_desc=Chinese+School&find_loc=Honolulu%2C+HI",
+          "description": "檀香山TOP10中文学校",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "education_005",
+          "name": "Punahou Luke Center",
+          "url": "https://www.punahou.edu/wo-international-center/the-luke-center-for-chinese-studies",
+          "description": "全美最大中文项目之一",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "education_006",
+          "name": "UH Manoa Learn Chinese",
+          "url": "https://manoa.hawaii.edu/learnchinese/",
+          "description": "夏威夷大学中文教学资源库",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "education_007",
+          "name": "Reddit Mandarin School",
+          "url": "https://www.reddit.com/r/Hawaii/comments/17q38w3/mandarin_school/",
+          "description": "家长推荐：Mun Lan、Sui Wah",
+          "data_quality": "medium",
+          "chinese_friendly": true,
+          "scrape_frequency": "quarterly"
+        },
+        {
+          "id": "education_008",
+          "name": "Hawaii Chinese Immersion School",
+          "url": "https://www.kaimukihawaii.com/d/c/hawaii-chinese-immersion-school.html",
+          "description": "初级、中级、高级普通话班",
+          "data_quality": "medium",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "education_009",
+          "name": "Chinese Language Educ Assoc Main",
+          "url": "https://www.cleah.org/",
+          "description": "教育资源、会员信息、新闻",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "education_010",
+          "name": "Language Trainers Chinese",
+          "url": "https://www.languagetrainers.com/chinese-courses-honolulu.php",
+          "description": "一对一中文课程，上门或在线",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        }
+      ]
+    },
+
+    "8_healthcare": {
+      "name": "医疗健康模块",
+      "description": "医院、诊所、中医服务",
+      "priority": "P1",
+      "update_frequency": "monthly",
+      "sources": [
+        {
+          "id": "healthcare_001",
+          "name": "Kalihi-Palama Health Center",
+          "url": "https://www.kphc.org/",
+          "description": "社区健康中心，新生之家",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "healthcare_002",
+          "name": "Yelp Hospitals Chinatown",
+          "url": "https://m.yelp.com/search?find_desc=Hospitals&find_loc=Chinatown%2C+Honolulu%2C+HI",
+          "description": "唐人街附近TOP10医院",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "healthcare_003",
+          "name": "Hawaii Pacific Health",
+          "url": "https://www.hawaiipacifichealth.org/",
+          "description": "夏威夷太平洋健康系统",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "healthcare_004",
+          "name": "Kokua Kalihi Valley",
+          "url": "https://www.kkv.net/",
+          "description": "93%亚太裔患者，多语言服务",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "healthcare_005",
+          "name": "Doctors of Waikiki",
+          "url": "https://www.doctorsofwaikiki.com/medical-clinic/",
+          "description": "威基基领先医疗诊所，walk-in",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "healthcare_006",
+          "name": "Leahi Hospital",
+          "url": "https://leahi.hhsc.org/",
+          "description": "长期护理、短期康复、成人日托",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "healthcare_007",
+          "name": "Kau Hospital",
+          "url": "https://www.kauhospital.org/",
+          "description": "24/7急诊、X光、实验室服务",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "healthcare_008",
+          "name": "Kuakini Medical Center",
+          "url": "https://www.kuakini.org/wps/portal/public/About-Us/Subsidiaries/Kuakini-Medical-Center",
+          "description": "非营利急症护理医院",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "healthcare_009",
+          "name": "Yelp Health Medical Chinatown",
+          "url": "https://m.yelp.com/search?find_desc=Health+%26+Medical&find_loc=Chinatown%2C+Honolulu%2C+HI",
+          "description": "越华针灸草药等中医服务",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "healthcare_010",
+          "name": "Hilo Benioff Medical Center",
+          "url": "https://www.hbmc.org/",
+          "description": "提供中文、韩文服务",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        }
+      ]
+    },
+
+    "9_shopping_lifestyle": {
+      "name": "购物生活模块",
+      "description": "超市、商场、生活服务",
+      "priority": "P1",
+      "update_frequency": "monthly",
+      "sources": [
+        {
+          "id": "shopping_001",
+          "name": "Yelp Chinese Grocery",
+          "url": "https://www.yelp.com/search?find_desc=Chinese+Grocery+Store&find_loc=Honolulu%2C+HI",
+          "description": "TOP10中国超市：Sun Chong、Yuan Feng",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "shopping_002",
+          "name": "Yelp Chinese Grocery Updated",
+          "url": "https://www.yelp.com/search?find_desc=Chinese+Grocery&find_loc=Honolulu%2C+HI",
+          "description": "2025最新中国超市评分",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "shopping_003",
+          "name": "Reddit Asian Grocery Stores",
+          "url": "https://www.reddit.com/r/Honolulu/comments/1lj5lkl/questions_on_asian_grocery_stores_in_honolulu/",
+          "description": "本地人推荐：Don Quijote、Island Green Mart",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "quarterly"
+        },
+        {
+          "id": "shopping_004",
+          "name": "City Square Shopping Center",
+          "url": "https://www.citysquarehawaii.com/",
+          "description": "Kalihi唐人街市场、餐厅、商店",
+          "data_quality": "high",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "shopping_005",
+          "name": "Don Quijote TripAdvisor",
+          "url": "https://www.tripadvisor.com/ShowUserReviews-g60982-d1530241-r370326842-Don_Quijote-Honolulu_Oahu_Hawaii.html",
+          "description": "檀香山最大亚洲超市",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "shopping_006",
+          "name": "88 Supermarket Instagram",
+          "url": "https://www.instagram.com/88supermarkethawaii/?hl=en",
+          "description": "1088 Bishop St，6AM-8PM每日营业",
+          "data_quality": "medium",
+          "chinese_friendly": true,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "shopping_007",
+          "name": "Ala Moana Center",
+          "url": "https://www.alamoanacenter.com/en/",
+          "description": "世界最大露天购物中心，350+商店",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "shopping_008",
+          "name": "McCully Shopping Center",
+          "url": "https://mccullyshoppingcenter.com/",
+          "description": "本地商家和国际连锁",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "shopping_009",
+          "name": "Market City Shopping Center",
+          "url": "https://marketcityhawaii.com/",
+          "description": "夏威夷首家Foodland，本地商家",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "shopping_010",
+          "name": "Marukai Hawaii",
+          "url": "https://www.marukaihawaii.com/",
+          "description": "日本超市：寿司、便当、日本杂货、清酒",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        }
+      ]
+    },
+
+    "10_transportation": {
+      "name": "交通出行模块",
+      "description": "公共交通、TheBus、出行指南",
+      "priority": "P1",
+      "update_frequency": "weekly",
+      "sources": [
+        {
+          "id": "transport_001",
+          "name": "TheBus Official",
+          "url": "https://www.thebus.org/",
+          "description": "官方网站，路线时刻表",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "weekly"
+        },
+        {
+          "id": "transport_002",
+          "name": "Go Hawaii Public Transport",
+          "url": "https://www.gohawaii.com/islands/oahu/travel-info/transportation/public-transportation",
+          "description": "欧胡岛公共交通指南",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "transport_003",
+          "name": "TheBus Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/TheBus_(Honolulu)",
+          "description": "2024年乘客量：43,206,000",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "transport_004",
+          "name": "TheBus FAQs Honolulu.gov",
+          "url": "https://www.honolulu.gov/dts/tmd/bus-faqs/",
+          "description": "官方FAQ，Google地图路线规划",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "transport_005",
+          "name": "TripAdvisor TheBus Reviews",
+          "url": "https://www.tripadvisor.com/Attraction_Review-g60982-d500858-Reviews-The_Bus-Honolulu_Oahu_Hawaii.html",
+          "description": "游客评价，42路东西线等",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "transport_006",
+          "name": "Reddit Modes of Transit",
+          "url": "https://www.reddit.com/r/transit/comments/1imm9ng/modes_of_transit_in_honolulu_hawaii/",
+          "description": "檀香山交通历史，电车和无轨电车",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "quarterly"
+        },
+        {
+          "id": "transport_007",
+          "name": "First Cabin TheBus Guide",
+          "url": "https://first-cabin.us/blog/waikiki-transportation/bus/",
+          "description": "威基基乘车指南：票价、路线、技巧",
+          "data_quality": "high",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "transport_008",
+          "name": "UH Manoa Commuter Services",
+          "url": "https://manoa.hawaii.edu/commuter/thebus/",
+          "description": "大学通勤服务，空调巴士",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "transport_009",
+          "name": "Facebook Public Transport Reliable",
+          "url": "https://www.facebook.com/groups/1747780178610364/posts/9861706330551001/",
+          "description": "票价$3单程，$6日票",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "monthly"
+        },
+        {
+          "id": "transport_010",
+          "name": "Reddit TheBus Review",
+          "url": "https://www.reddit.com/r/VisitingHawaii/comments/1m9d904/oahu_bus_system_dabus_review/",
+          "description": "用户体验：檀香山到Laie 1小时50分",
+          "data_quality": "medium",
+          "chinese_friendly": false,
+          "scrape_frequency": "quarterly"
+        }
+      ]
+    }
+  },
+
+  "scraping_configuration": {
+    "default_settings": {
+      "timeout": 60000,
+      "retry_attempts": 3,
+      "rate_limit": "10 requests per minute",
+      "user_agent": "HawaiiHub Data Collector Bot/1.0",
+      "respect_robots_txt": true
+    },
+    "firecrawl_settings": {
+      "formats": ["markdown", "html"],
+      "only_main_content": true,
+      "max_age": 172800000,
+      "remove_base64_images": true
+    },
+    "data_storage": {
+      "raw_data_path": "data/raw/",
+      "processed_data_path": "data/processed/",
+      "cache_path": "data/cache/",
+      "backup_frequency": "daily"
+    }
+  },
+
+  "quality_metrics": {
+    "total_sources": 100,
+    "high_quality": 72,
+    "medium_quality": 24,
+    "low_quality": 4,
+    "chinese_friendly": 51,
+    "verified_sources": 100,
+    "last_verification": "2025-10-28"
+  },
+
+  "usage_notes": {
+    "priority_levels": {
+      "P0": "每日更新，核心功能",
+      "P1": "每周更新，重要功能",
+      "P2": "每月更新，辅助功能"
+    },
+    "data_quality_levels": {
+      "high": "官方来源，数据可靠，更新及时",
+      "medium": "社区来源，数据较好，更新一般",
+      "low": "参考来源，数据有限，更新不定"
+    },
+    "scraping_best_practices": [
+      "使用Firecrawl MCP工具优先",
+      "遵守robots.txt规则",
+      "设置合理的请求间隔",
+      "缓存已采集的数据",
+      "监控采集成功率",
+      "定期验证数据源可用性"
+    ]
+  }
+}

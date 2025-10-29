@@ -1,0 +1,117 @@
+# 电商团购智能体配置
+# 业务场景：省钱团购网
+# 使用端点：Crawl API + Actions
+
+# 智能体基础配置
+agent:
+  name: "电商团购智能体"
+  type: "ecommerce"
+  description: "采集电商平台商品信息、价格、评论"
+  enabled: true
+
+# API 配置
+api:
+  endpoint: "crawl"  # 主要使用 Crawl 端点
+  timeout: 300
+  max_retries: 3
+  retry_delay: 2.0
+
+# Firecrawl 参数
+firecrawl:
+  # 性能优化（价格监控需要实时数据）
+  max_age: 0  # 不使用缓存，获取实时价格
+  proxy: "stealth"  # 电商网站反爬严格，使用 stealth 代理
+
+  # 输出格式
+  formats:
+    - "markdown"
+    - "screenshot"  # 截图作为价格证据
+    - type: "json"
+      schema: "Product"
+
+  # Actions - 处理动态加载内容
+  actions:
+    - type: "wait"
+      milliseconds: 2000
+    - type: "scroll"
+      direction: "down"
+    - type: "click"
+      selector: ".load-more"
+    - type: "wait"
+      milliseconds: 1500
+    - type: "screenshot"
+      fullPage: true
+
+  # 内容过滤
+  only_main_content: true
+  include_tags: ["product", "price", "description"]
+  exclude_tags: ["nav", "footer", "related"]
+
+# Crawl 配置
+crawl:
+  limit: 200
+  max_depth: 2
+  include_paths: ["/products/*", "/deals/*"]
+  exclude_paths: ["/cart/*", "/checkout/*", "/account/*"]
+  ignore_sitemap: false
+
+# 数据源配置
+sources:
+  - name: "淘宝特价"
+    url: "https://tejia.taobao.com"
+    platform: "淘宝"
+    category: "团购"
+    priority: 1
+    enabled: true
+
+  - name: "京东秒杀"
+    url: "https://miaosha.jd.com"
+    platform: "京东"
+    category: "秒杀"
+    priority: 1
+    enabled: true
+
+  - name: "拼多多百亿补贴"
+    url: "https://mobile.yangkeduo.com/subsidy.html"
+    platform: "拼多多"
+    category: "补贴"
+    priority: 2
+    enabled: true
+
+# 并发控制
+concurrency:
+  max_concurrent: 5  # 降低并发避免被封
+  batch_size: 10
+  queue_size: 50
+
+# 数据处理
+processing:
+  enable_dedup: true
+  auto_category: true
+  price_tracking: true  # 启用价格追踪
+  price_alert_threshold: 10  # 降价10%时提醒
+
+# 价格监控配置
+price_monitoring:
+  enabled: true
+  check_interval: "0 */6 * * *"  # 每6小时检查一次
+  alert_on_drop: true
+  min_drop_percentage: 5  # 至少降价5%
+
+# 调度配置
+schedule:
+  enabled: true
+  cron: "0 8,20 * * *"  # 每天8点和20点执行
+  timezone: "Asia/Shanghai"
+
+# 存储配置
+storage:
+  output_dir: "./output/ecommerce"
+  backup_enabled: true
+  formats: ["json", "csv"]
+  save_screenshots: true
+
+# 成本控制
+cost:
+  daily_budget: 2000  # credits（stealth 代理消耗更多）
+  alert_threshold: 1600

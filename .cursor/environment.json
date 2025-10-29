@@ -1,0 +1,177 @@
+{
+    "version": "2.0.0",
+    "updated": "2025-10-29",
+    "project": {
+        "name": "Firecrawl数据采集器",
+        "code": "FIRECRAWL-AGENT",
+        "description": "基于 Python + FastAPI + Next.js 的智能数据采集平台"
+    },
+    "paths": {
+        "docs": "docs/",
+        "src": "src/",
+        "tests": "tests/",
+        "config": "config/",
+        "scripts": "scripts/",
+        "prompts": ".cursor/prompts/"
+    },
+    "commands": {
+        "lint": "make lint",
+        "test": "make test",
+        "coverage": "make cov",
+        "build": "docker build -t firecrawl-agent .",
+        "deploy": "./scripts/deploy.sh",
+        "verify": "./.cursor/scripts/verify-prompts.sh"
+    },
+    "limits": {
+        "maxFiles": 5,
+        "maxLines": 200,
+        "maxApiCalls": 10,
+        "timeoutSeconds": 300
+    },
+    "quality": {
+        "unitTestCoverage": 80,
+        "performanceTarget": 500,
+        "apiTimeout": 30000,
+        "maxRetries": 3
+    },
+    "api": {
+        "firecrawl": {
+            "endpoint": "https://api.firecrawl.dev",
+            "quota": {
+                "monthly": 10000,
+                "warning": 8000
+            }
+        },
+        "pinecone": {
+            "endpoint": "https://api.pinecone.io"
+        },
+        "vercel": {
+            "endpoint": "https://api.vercel.com"
+        }
+    },
+    "storage": {
+        "maxFileSize": 104857600,
+        "maxBatchSize": 1000,
+        "retentionDays": 90,
+        "backupFrequency": "daily"
+    },
+    "quotas": {
+        "api": "10000次/月",
+        "storage": "100GB",
+        "compute": "1000小时/月",
+        "bandwidth": "1TB/月"
+    },
+    "environments": {
+        "development": {
+            "url": "http://localhost:8000",
+            "debug": true
+        },
+        "staging": {
+            "url": "https://staging.firecrawl-agent.com",
+            "debug": false
+        },
+        "production": {
+            "url": "https://api.firecrawl-agent.com",
+            "debug": false
+        }
+    },
+    "monitoring": {
+        "healthCheck": "/health",
+        "metricsEndpoint": "/metrics",
+        "logsEndpoint": "/logs",
+        "alertsEndpoint": "/alerts"
+    },
+    "security": {
+        "encryption": "AES-256",
+        "tlsVersion": "1.3",
+        "sessionTimeout": 3600,
+        "maxLoginAttempts": 5
+    },
+    "features": {
+        "aiQuery": true,
+        "dataClassification": true,
+        "contentSummary": true,
+        "similaritySearch": true,
+        "multiTenant": true,
+        "realtime": true
+    },
+    "compliance": {
+        "gdpr": true,
+        "ccpa": true,
+        "soc2": false,
+        "iso27001": false
+    },
+    "roles": {
+        "available": [
+            "PO",
+            "PM",
+            "BA",
+            "PjM",
+            "Arch",
+            "LLME",
+            "DEV",
+            "QA",
+            "Ops",
+            "TW"
+        ],
+        "workflow": [
+            "user_story",
+            "prd",
+            "task_breakdown",
+            "tech_design",
+            "implementation",
+            "testing",
+            "iteration"
+        ]
+    },
+    "tools": {
+        "mcp": {
+            "enabled": true,
+            "servers": [
+                "filesystem",
+                "github",
+                "firecrawl",
+                "convex"
+            ]
+        },
+        "linters": [
+            "flake8",
+            "pylint",
+            "black",
+            "isort"
+        ],
+        "testing": [
+            "pytest",
+            "coverage",
+            "pytest-asyncio"
+        ],
+        "documentation": [
+            "sphinx",
+            "mkdocs",
+            "mermaid"
+        ]
+    },
+    "integrations": {
+        "ai": {
+            "openai": true,
+            "anthropic": true,
+            "vercel": true
+        },
+        "database": {
+            "postgresql": true,
+            "pinecone": true,
+            "redis": true
+        },
+        "deployment": {
+            "docker": true,
+            "kubernetes": false,
+            "vercel": true
+        }
+    },
+    "documentation": {
+        "api": "docs/API.md",
+        "user": "docs/USER_GUIDE.md",
+        "technical": "docs/TECH_DESIGN.md",
+        "changelog": "docs/CHANGELOG.md"
+    }
+}

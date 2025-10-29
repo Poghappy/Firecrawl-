@@ -2,63 +2,141 @@
 
 ## 项目概述
 
-基于 Python 3.9+、FastAPI、PostgreSQL、Redis、Docker 的数据采集系统。
+基于 Python 3.9+、FastAPI、Firecrawl API 的智能数据采集系统，支持多业务场景。
+
+**技术栈**: Python + AsyncFirecrawl + PostgreSQL + Redis + Docker
+**架构模式**: 智能体架构（BaseAgent + 业务专用 Agent）
+**当前版本**: v2.1.0
 
 ## 核心原则
 
-- 始终使用简体中文回复
-- 优先使用 MCP 工具执行任务
-- 参考项目中的 firecrawl-docs 官方文档
-- 小步快跑：每次改动 ≤5 个文件
-- 先读后写：执行前先读取相关文件和 project_status.md
-- 立即验证：每次改动后运行测试
+- 🌐 **始终使用简体中文回复**
+- 🔧 **优先使用 MCP 工具执行任务**
+- 📚 **参考 docs/official-docs/ 中的 Firecrawl 官方文档**
+- 🏃 **小步快跑**: 每次改动 ≤5 个文件
+- 📖 **先读后写**: 必须先读取 project_status.md 和相关文件
+- ✅ **立即验证**: 每次改动后运行测试
+
+## 架构规范
+
+### 智能体开发模式
+
+- 所有业务采集器继承 `BaseScraper` 或 `BaseAgent`
+- 每个业务场景创建独立子项目（如 honolulu_rentals/）
+- 使用 Pydantic 模型定义数据结构（src/models/）
+- 配置文件统一使用 dataclass（参考 firecrawl_config.py）
+
+### Firecrawl API 使用规范
+
+- **必须使用 AsyncFirecrawl 类**（高性能异步）
+- **优先使用缓存**: maxAge=172800000（2 天）节省成本
+- **选择合适端点**:
+  - Scrape: 单页抓取
+  - Batch Scrape: 批量已知 URL
+  - Crawl: 整站爬取
+  - Search: 搜索+抓取
+  - Map: URL 发现
+- **结构化提取**: 使用 Pydantic Schema + JSON Mode
 
 ## 代码规范
 
-### Python
+### Python 最佳实践
 
-- 使用类型提示、文档字符串、异常处理、日志记录
-- 导入顺序：标准库 → 第三方库 → 本地模块
-- 命名：snake_case (变量/函数)、PascalCase (类)、UPPER_SNAKE_CASE (常量)
-- 遵循 PEP 8，使用 Black 格式化，isort 排序
-- 优先使用异步编程（async/await）
+- ✅ 类型提示（typing）+ 文档字符串（Docstring）
+- ✅ 异常处理 + 日志记录（logging）
+- ✅ 导入顺序: 标准库 → 第三方库 → 本地模块
+- ✅ 命名: snake_case (变量/函数)、PascalCase (类)、UPPER_SNAKE_CASE (常量)
+- ✅ 格式化: Black + isort
+- ✅ **优先使用 async/await 异步编程**
 
-### 测试
+### 数据模型规范
+
+```python
+# 使用 Pydantic BaseModel
+from pydantic import BaseModel, Field
+
+class RentalListing(BaseModel):
+    title: str
+    price: float = Field(..., gt=0)
+    location: str
+```
+
+### 测试规范
 
 - 测试覆盖率 >80%
-- 使用 pytest + pytest-asyncio
-- 模拟外部依赖，测试正常和异常场景
+- pytest + pytest-asyncio
+- 模拟外部依赖（mock Firecrawl API）
+- 测试正常和异常场景
+
+## 业务场景配置
+
+### 支持的业务场景
+
+1. **新闻资讯** (火鸟门户) - Search API
+2. **团购比价** (省钱团购网) - Crawl + Actions
+3. **招聘信息** (Aloha 招聘网) - Batch Scrape + JSON
+4. **租房信息** (honolulu_rentals) - Crawl + Real Estate Model
+5. **学习资源** - Map + Batch Scrape
+
+### 新建业务场景步骤
+
+1. 在项目根目录创建子项目（如 `business_name/`）
+2. 创建数据模型（`src/models/business.py`）
+3. 创建爬虫类（继承 `BaseScraper`）
+4. 添加配置（`config.py`）
+5. 编写测试（`test_*.py`）
+6. 更新 project_status.md
 
 ## 安全要求
 
-- 敏感信息使用环境变量（.env）
-- 不提交真实 API 密钥
-- 提供 .env.example 模板
-- 实施 API 认证和速率限制
+- 🔐 敏感信息使用环境变量（.env）
+- 🔐 不提交真实 API 密钥
+- 🔐 提供 .env.example 模板
+- 🔐 实施 API 认证和速率限制
 
 ## Git 提交规范
 
-feat: 新功能 | fix: Bug 修复 | docs: 文档 | style: 格式 | refactor: 重构 | test: 测试 | chore: 构建
+```
+feat: 新功能
+fix: Bug 修复
+docs: 文档更新
+style: 代码格式
+refactor: 代码重构
+test: 测试相关
+chore: 构建/工具
+```
 
 ## 工作流程
 
-1. 分析任务并拆分子任务
-2. 查看 project_status.md 了解现状
-3. 小步快跑，增量实现
-4. 运行测试验证
-5. 更新文档和状态
-6. 规范提交
+1. 📋 分析任务并拆分子任务
+2. 📖 查看 project_status.md 了解现状
+3. 🏃 小步快跑，增量实现
+4. ✅ 运行测试验证
+5. 📝 更新文档和状态
+6. 💾 规范提交
 
 ## 禁止事项
 
 - ❌ 硬编码 API 密钥和密码
-- ❌ 一次性大规模重写
+- ❌ 一次性大规模重写（必须小步快跑）
 - ❌ 跳过测试直接提交
 - ❌ 使用中文文件名
+- ❌ 创建重复文件（优先更新现有文件）
+- ❌ 使用同步 Firecrawl 类（必须用 AsyncFirecrawl）
 
 ## 关键目录
 
-- `src/`: 核心代码
+- `src/`: 核心代码（collector, config, pipeline）
+- `src/models/`: 数据模型（Pydantic）
 - `tests/`: 测试代码
-- `docs/official-docs/`: Firecrawl 官方文档
-- `project_status.md`: 项目状态
+- `docs/official-docs/`: Firecrawl 官方文档（892 个文件）
+- `honolulu_rentals/`: 租房信息采集示例
+- `project_status.md`: 项目状态（必读）
+
+## 性能优化指南
+
+- 使用 AsyncFirecrawl + Semaphore 控制并发
+- 启用缓存（maxAge）节省 API 成本
+- 优先使用 basic 代理（stealth +4 credits）
+- 使用 Map + Batch 而非 Crawl（大型网站）
+- 实施错误重试（指数退避）

@@ -1,0 +1,243 @@
+{
+  "summary": {
+    "total": 5,
+    "filtered": 5,
+    "duplicates_removed": 0,
+    "avg_price": 1340.0,
+    "min_price": 850.0,
+    "max_price": 2200.0,
+    "platforms": {
+      "craigslist": {
+        "count": 5,
+        "avg_price": 0,
+        "min_price": 850.0,
+        "max_price": 2200.0
+      }
+    },
+    "cost_credits": 0,
+    "cost_usd": 0.0
+  },
+  "listings": [
+    {
+      "id": "demo_20251029_001",
+      "title": "🏡 Cozy Studio in Makiki - Perfect for UH Students",
+      "price": 1100.0,
+      "url": "https://honolulu.craigslist.org/hnl/apa/d/demo-listing-1/1234567890.html",
+      "platform": "craigslist",
+      "property_type": "Studio",
+      "bedrooms": "Studio",
+      "bathrooms": "1",
+      "area_sqft": null,
+      "neighborhood": "Makiki",
+      "address": "1234 Piikoi St, Honolulu, HI 96814",
+      "zipcode": null,
+      "latitude": null,
+      "longitude": null,
+      "images": [
+        "https://images.craigslist.org/00G0G_example1.jpg",
+        "https://images.craigslist.org/00H0H_example2.jpg",
+        "https://images.craigslist.org/00I0I_example3.jpg"
+      ],
+      "thumbnail": "https://images.craigslist.org/00G0G_example1.jpg",
+      "contact": {
+        "phone": "(808) 123-4567",
+        "email": "landlord1@example.com",
+        "url": null
+      },
+      "description": "Beautiful studio apartment in the heart of Makiki. Walking distance to UH Manoa. Includes parking, WiFi, and utilities.",
+      "amenities": [
+        "Parking",
+        "WiFi",
+        "Laundry",
+        "A/C"
+      ],
+      "utilities_included": [],
+      "pets_allowed": null,
+      "parking_available": null,
+      "laundry": null,
+      "available_date": null,
+      "posted_date": "2025-10-29T21:19:49.597281",
+      "scraped_at": "2025-10-29T21:19:49.597285",
+      "is_verified": false,
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "similarity_score": null,
+      "raw_data": null
+    },
+    {
+      "id": "demo_20251029_002",
+      "title": "🌺 1BR/1BA Near Ala Moana - Ocean View",
+      "price": 1350.0,
+      "url": "https://honolulu.craigslist.org/hnl/apa/d/demo-listing-2/1234567890.html",
+      "platform": "craigslist",
+      "property_type": "1B1B",
+      "bedrooms": "1",
+      "bathrooms": "1",
+      "area_sqft": null,
+      "neighborhood": "Ala Moana",
+      "address": "1441 Victoria St, Honolulu, HI 96822",
+      "zipcode": null,
+      "latitude": null,
+      "longitude": null,
+      "images": [
+        "https://images.craigslist.org/00J0J_example4.jpg",
+        "https://images.craigslist.org/00K0K_example5.jpg"
+      ],
+      "thumbnail": "https://images.craigslist.org/00J0J_example4.jpg",
+      "contact": {
+        "phone": "(808) 234-5678",
+        "email": null,
+        "url": null
+      },
+      "description": "Spacious 1 bedroom with ocean view. Close to Ala Moana Center. Pet-friendly.",
+      "amenities": [
+        "Parking",
+        "Pool",
+        "Pet Friendly",
+        "Dishwasher"
+      ],
+      "utilities_included": [],
+      "pets_allowed": null,
+      "parking_available": null,
+      "laundry": null,
+      "available_date": null,
+      "posted_date": "2025-10-29T21:19:49.597649",
+      "scraped_at": "2025-10-29T21:19:49.597650",
+      "is_verified": false,
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "similarity_score": null,
+      "raw_data": null
+    },
+    {
+      "id": "demo_20251029_003",
+      "title": "Affordable Studio in Kalihi - $850/mo",
+      "price": 850.0,
+      "url": "https://honolulu.craigslist.org/hnl/apa/d/demo-listing-3/1234567890.html",
+      "platform": "craigslist",
+      "property_type": "Studio",
+      "bedrooms": "Studio",
+      "bathrooms": "1",
+      "area_sqft": null,
+      "neighborhood": "Kalihi",
+      "address": "2345 Kalihi St, Honolulu, HI 96819",
+      "zipcode": null,
+      "latitude": null,
+      "longitude": null,
+      "images": [
+        "https://images.craigslist.org/00L0L_example6.jpg"
+      ],
+      "thumbnail": "https://images.craigslist.org/00L0L_example6.jpg",
+      "contact": {
+        "phone": null,
+        "email": "owner@example.com",
+        "url": null
+      },
+      "description": "Budget-friendly studio in Kalihi. Close to bus stops.",
+      "amenities": [
+        "Laundry"
+      ],
+      "utilities_included": [],
+      "pets_allowed": null,
+      "parking_available": null,
+      "laundry": null,
+      "available_date": null,
+      "posted_date": "2025-10-29T21:19:49.597679",
+      "scraped_at": "2025-10-29T21:19:49.597680",
+      "is_verified": false,
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "similarity_score": null,
+      "raw_data": null
+    },
+    {
+      "id": "demo_20251029_004",
+      "title": "✨ Luxury 2BR/2BA in Waikiki - Walk to Beach",
+      "price": 2200.0,
+      "url": "https://honolulu.craigslist.org/hnl/apa/d/demo-listing-4/1234567890.html",
+      "platform": "craigslist",
+      "property_type": "2B2B",
+      "bedrooms": "2",
+      "bathrooms": "2",
+      "area_sqft": null,
+      "neighborhood": "Waikiki",
+      "address": "123 Kuhio Ave, Honolulu, HI 96815",
+      "zipcode": null,
+      "latitude": null,
+      "longitude": null,
+      "images": [
+        "https://images.craigslist.org/00M0M_example7.jpg",
+        "https://images.craigslist.org/00N0N_example8.jpg"
+      ],
+      "thumbnail": "https://images.craigslist.org/00M0M_example7.jpg",
+      "contact": {
+        "phone": "(808) 345-6789",
+        "email": "luxury@example.com",
+        "url": null
+      },
+      "description": "Gorgeous 2BR/2BA condo in Waikiki. Steps from the beach. Fully furnished.",
+      "amenities": [
+        "Parking",
+        "Pool",
+        "Gym",
+        "Furnished",
+        "A/C",
+        "WiFi"
+      ],
+      "utilities_included": [],
+      "pets_allowed": null,
+      "parking_available": null,
+      "laundry": null,
+      "available_date": null,
+      "posted_date": "2025-10-29T21:19:49.597699",
+      "scraped_at": "2025-10-29T21:19:49.597699",
+      "is_verified": false,
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "similarity_score": null,
+      "raw_data": null
+    },
+    {
+      "id": "demo_20251029_005",
+      "title": "1BR in Manoa Valley - Quiet Neighborhood",
+      "price": 1200.0,
+      "url": "https://honolulu.craigslist.org/hnl/apa/d/demo-listing-5/1234567890.html",
+      "platform": "craigslist",
+      "property_type": "1B1B",
+      "bedrooms": "1",
+      "bathrooms": "1",
+      "area_sqft": null,
+      "neighborhood": "Manoa",
+      "address": "3456 Manoa Rd, Honolulu, HI 96822",
+      "zipcode": null,
+      "latitude": null,
+      "longitude": null,
+      "images": [
+        "https://images.craigslist.org/00O0O_example9.jpg"
+      ],
+      "thumbnail": "https://images.craigslist.org/00O0O_example9.jpg",
+      "contact": {
+        "phone": "(808) 456-7890",
+        "email": null,
+        "url": null
+      },
+      "description": "Peaceful 1 bedroom in Manoa. Great for students and professionals.",
+      "amenities": [
+        "Parking",
+        "Laundry"
+      ],
+      "utilities_included": [],
+      "pets_allowed": null,
+      "parking_available": null,
+      "laundry": null,
+      "available_date": null,
+      "posted_date": "2025-10-29T21:19:49.597720",
+      "scraped_at": "2025-10-29T21:19:49.597721",
+      "is_verified": false,
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "similarity_score": null,
+      "raw_data": null
+    }
+  ]
+}

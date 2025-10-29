@@ -1,0 +1,104 @@
+# 新闻资讯智能体配置
+# 业务场景：火鸟门户新闻系统
+# 使用端点：Search API + Scrape API
+
+# 智能体基础配置
+agent:
+  name: "新闻资讯智能体"
+  type: "news"
+  description: "采集各类新闻资讯，支持多来源聚合"
+  enabled: true
+
+# API 配置
+api:
+  endpoint: "search"  # 主要使用 Search 端点
+  timeout: 120
+  max_retries: 3
+  retry_delay: 2.0
+
+# Firecrawl 参数
+firecrawl:
+  # 性能优化
+  max_age: 600000  # 10分钟缓存（新闻需要较新）
+  proxy: "basic"
+
+  # 输出格式
+  formats:
+    - "markdown"
+    - "links"
+    - type: "json"
+      schema: "NewsArticle"  # 使用 src/models/news.py 中的 NewsArticle 模型
+
+  # 内容过滤
+  only_main_content: true
+  include_tags: ["article", "main", "content"]
+  exclude_tags: ["nav", "footer", "aside", "ads"]
+
+# Search 配置
+search:
+  sources:
+    - type: "news"
+  limit: 20
+  tbs: "qdr:d"  # 最近24小时
+  location: "US"
+  categories: []
+
+# 数据源配置
+sources:
+  - name: "Hawaii News Now"
+    url: "https://www.hawaiinewsnow.com"
+    category: "本地新闻"
+    priority: 1
+    enabled: true
+    query: "Hawaii news site:hawaiinewsnow.com"
+
+  - name: "Honolulu Star-Advertiser"
+    url: "https://www.staradvertiser.com"
+    category: "本地新闻"
+    priority: 1
+    enabled: true
+    query: "Honolulu news site:staradvertiser.com"
+
+  - name: "Civil Beat"
+    url: "https://www.civilbeat.org"
+    category: "深度报道"
+    priority: 2
+    enabled: true
+    query: "Hawaii politics site:civilbeat.org"
+
+# 并发控制
+concurrency:
+  max_concurrent: 10
+  batch_size: 20
+  queue_size: 100
+
+# 数据处理
+processing:
+  enable_dedup: true  # 启用去重
+  auto_category: true  # 自动分类
+  extract_summary: true  # 提取摘要
+  extract_keywords: true  # 提取关键词
+  language_detection: true
+
+# 调度配置
+schedule:
+  enabled: true
+  cron: "0 */2 * * *"  # 每2小时执行一次
+  timezone: "Pacific/Honolulu"
+
+# 存储配置
+storage:
+  output_dir: "./output/news"
+  backup_enabled: true
+  formats: ["json", "markdown"]
+
+# 通知配置
+notifications:
+  enabled: false
+  webhook_url: ""
+  email: ""
+
+# 成本控制
+cost:
+  daily_budget: 1000  # credits
+  alert_threshold: 800  # 80% 预警

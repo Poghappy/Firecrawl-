@@ -1,0 +1,11 @@
+# Sphinx 构建目录
+_build/
+_static/
+_templates/
+
+# Sphinx 缓存
+.doctrees/
+
+# 自动生成的文件
+*.pyc
+__pycache__/

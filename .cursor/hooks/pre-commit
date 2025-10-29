@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Pre-commit Hook - Cursor Prompts 质量检查
+# 版本: v2.0.0
+
+set -e
+
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+NC='\033[0m'
+
+echo -e "${YELLOW}[Pre-Commit]${NC} Cursor Prompts 质量检查..."
+
+# 检查是否有 prompts 文件变更
+if git diff --cached --name-only | grep -q "^\.cursor/prompts/"; then
+    echo -e "${YELLOW}检测到 Prompts 文件变更，执行验证...${NC}"
+
+    # 运行验证脚本
+    if [ -f ".cursor/scripts/verify-prompts.sh" ]; then
+        if bash .cursor/scripts/verify-prompts.sh; then
+            echo -e "${GREEN}✓ Prompts 验证通过${NC}"
+        else
+            echo -e "${RED}✗ Prompts 验证失败${NC}"
+            echo "请修复验证错误后再提交"
+            exit 1
+        fi
+    fi
+
+    # 检查 JSON 格式
+    if command -v jq &> /dev/null; then
+        if git diff --cached --name-only | grep -q "\.json$"; then
+            echo "检查 JSON 文件格式..."
+            for file in $(git diff --cached --name-only | grep "\.json$"); do
+                if [ -f "$file" ]; then
+                    if ! jq empty "$file" 2>/dev/null; then
+                        echo -e "${RED}✗ JSON 格式错误: $file${NC}"
+                        exit 1
+                    fi
+                fi
+            done
+            echo -e "${GREEN}✓ JSON 格式正确${NC}"
+        fi
+    fi
+fi
+
+# 检查是否有大文件
+MAX_SIZE=1048576  # 1MB
+for file in $(git diff --cached --name-only); do
+    if [ -f "$file" ]; then
+        size=$(wc -c < "$file")
+        if [ $size -gt $MAX_SIZE ]; then
+            echo -e "${RED}✗ 文件过大 (>1MB): $file ($size bytes)${NC}"
+            echo "请检查是否需要使用 Git LFS"
+            exit 1
+        fi
+    fi
+done
+
+echo -e "${GREEN}✓ Pre-commit 检查通过${NC}"
+exit 0

@@ -1,0 +1,109 @@
+# 学习资源智能体配置
+# 业务场景：学习网
+# 使用端点：Map + Batch Scrape
+
+# 智能体基础配置
+agent:
+  name: "学习资源智能体"
+  type: "learning"
+  description: "采集在线课程、学习资源"
+  enabled: true
+
+# API 配置
+api:
+  endpoint: "map"  # 先使用 Map 发现资源
+  secondary_endpoint: "batch_scrape"  # 然后批量抓取
+  timeout: 300
+  max_retries: 3
+  retry_delay: 2.0
+
+# Firecrawl 参数
+firecrawl:
+  # 性能优化
+  max_age: 172800000  # 2天缓存（学习资源相对稳定）
+  proxy: "basic"
+
+  # 输出格式
+  formats:
+    - "markdown"
+    - "links"
+    - type: "json"
+      schema: "Course"  # 课程使用 Course 模型
+
+  # 内容过滤
+  only_main_content: true
+  include_tags: ["course", "lesson", "content"]
+  exclude_tags: ["nav", "footer", "comments"]
+
+# Map 配置
+map:
+  limit: 500
+  search: "course"  # 过滤包含 course 的 URL
+  sitemap: "include"
+
+# Batch Scrape 配置
+batch:
+  max_urls_per_batch: 50
+  parallel_batches: 5
+
+# 数据源配置
+sources:
+  - name: "Coursera"
+    url: "https://www.coursera.org"
+    category: "MOOC平台"
+    priority: 1
+    enabled: true
+    focus_paths: ["/learn/*", "/specializations/*"]
+
+  - name: "Udemy"
+    url: "https://www.udemy.com"
+    category: "在线课程"
+    priority: 1
+    enabled: true
+    focus_paths: ["/course/*"]
+
+  - name: "edX"
+    url: "https://www.edx.org"
+    category: "MOOC平台"
+    priority: 2
+    enabled: true
+    focus_paths: ["/course/*", "/program/*"]
+
+# 课程分类
+categories:
+  - "编程开发"
+  - "数据科学"
+  - "人工智能"
+  - "设计创意"
+  - "商业管理"
+  - "语言学习"
+
+# 并发控制
+concurrency:
+  max_concurrent: 10
+  batch_size: 50
+  queue_size: 200
+
+# 数据处理
+processing:
+  enable_dedup: true
+  auto_category: true
+  extract_modules: true  # 提取课程模块
+  extract_skills: true  # 提取技能标签
+
+# 调度配置
+schedule:
+  enabled: true
+  cron: "0 2 * * 0"  # 每周日凌晨2点
+  timezone: "UTC"
+
+# 存储配置
+storage:
+  output_dir: "./output/learning"
+  backup_enabled: true
+  formats: ["json", "markdown"]
+
+# 成本控制
+cost:
+  daily_budget: 800  # credits（每周执行一次）
+  alert_threshold: 600

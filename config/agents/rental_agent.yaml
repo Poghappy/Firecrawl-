@@ -1,0 +1,114 @@
+# 租房信息智能体配置
+# 业务场景：房地产租赁
+# 使用端点：Crawl + Actions
+
+# 智能体基础配置
+agent:
+  name: "租房信息智能体"
+  type: "rental"
+  description: "采集租房信息、房源详情"
+  enabled: true
+
+# API 配置
+api:
+  endpoint: "crawl"
+  timeout: 300
+  max_retries: 3
+  retry_delay: 2.0
+
+# Firecrawl 参数
+firecrawl:
+  # 性能优化
+  max_age: 3600000  # 1小时缓存
+  proxy: "basic"
+
+  # 输出格式
+  formats:
+    - "markdown"
+    - "images"  # 提取房源图片
+    - type: "json"
+      schema: "RentalListing"
+
+  # Actions - 处理地图和筛选
+  actions:
+    - type: "wait"
+      milliseconds: 3000
+    - type: "click"
+      selector: "button[data-filter='honolulu']"
+    - type: "wait"
+      milliseconds: 2000
+    - type: "scroll"
+      direction: "down"
+    - type: "click"
+      selector: ".load-more"
+
+  # 内容过滤
+  only_main_content: true
+  include_tags: ["listing", "property", "details"]
+  exclude_tags: ["nav", "footer", "related"]
+
+# Crawl 配置
+crawl:
+  limit: 500
+  max_depth: 3
+  include_paths: ["/listings/*", "/rentals/*"]
+  exclude_paths: ["/saved/*", "/account/*"]
+  ignore_sitemap: false
+
+# 数据源配置
+sources:
+  - name: "Craigslist Honolulu"
+    url: "https://honolulu.craigslist.org/search/apa"
+    category: "综合租房"
+    priority: 1
+    enabled: true
+
+  - name: "Zillow Rentals"
+    url: "https://www.zillow.com/honolulu-hi/rentals"
+    category: "专业租房"
+    priority: 1
+    enabled: true
+
+  - name: "Apartments.com"
+    url: "https://www.apartments.com/honolulu-hi"
+    category: "公寓租赁"
+    priority: 2
+    enabled: true
+
+# 筛选条件
+filters:
+  location: "Honolulu, HI"
+  min_price: 1000
+  max_price: 5000
+  bedrooms: [1, 2, 3]
+  pet_friendly: null
+
+# 并发控制
+concurrency:
+  max_concurrent: 8
+  batch_size: 20
+  queue_size: 100
+
+# 数据处理
+processing:
+  enable_dedup: true
+  auto_category: true
+  extract_location: true  # 提取地理位置
+  extract_amenities: true  # 提取设施信息
+
+# 调度配置
+schedule:
+  enabled: true
+  cron: "0 10,18 * * *"  # 每天10点和18点
+  timezone: "Pacific/Honolulu"
+
+# 存储配置
+storage:
+  output_dir: "./output/rental"
+  backup_enabled: true
+  formats: ["json", "html"]  # 保存HTML格式便于查看图片
+
+# 成本控制
+cost:
+  daily_budget: 1200  # credits
+  alert_threshold: 1000

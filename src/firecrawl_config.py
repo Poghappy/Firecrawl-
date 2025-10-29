@@ -47,7 +47,7 @@ class SourceConfig:
     max_depth: int = 2
     limit: int = 10
     custom_params: Dict[str, Any] = field(default_factory=dict)
-    
+
     def __post_init__(self):
         if self.type not in ["crawl", "scrape", "extract"]:
             raise ValueError(f"不支持的数据源类型: {self.type}")
@@ -64,7 +64,7 @@ class ProcessingConfig:
     extract_summary: bool = True
     extract_keywords: bool = True
     language_detection: bool = True
-    
+
 
 @dataclass
 class FirecrawlAPIConfig:
@@ -75,7 +75,7 @@ class FirecrawlAPIConfig:
     max_retries: int = 3
     retry_delay: float = 1.0
     rate_limit: int = 100  # 每分钟请求数
-    
+
     def __post_init__(self):
         if not self.api_key:
             raise ValueError("Firecrawl API密钥不能为空")
@@ -90,7 +90,7 @@ class CacheConfig:
     storage_type: str = "memory"  # memory, redis, file
     redis_url: Optional[str] = None
     cache_dir: Optional[str] = None
-    
+
     def __post_init__(self):
         if self.storage_type == "redis" and not self.redis_url:
             raise ValueError("Redis缓存需要提供redis_url")
@@ -105,7 +105,7 @@ class ConcurrencyConfig:
     batch_size: int = 10
     queue_size: int = 100
     worker_timeout: int = 300
-    
+
     def __post_init__(self):
         if self.max_concurrent <= 0:
             raise ValueError("最大并发数必须大于0")
@@ -123,7 +123,7 @@ class StorageConfig:
     auto_backup: bool = True
     backup_retention_days: int = 30
     compress_backups: bool = True
-    
+
     def __post_init__(self):
         # 确保目录存在
         for dir_path in [self.output_dir, self.backup_dir, self.log_dir, self.temp_dir]:
@@ -140,7 +140,7 @@ class LoggingConfig:
     max_file_size: int = 10 * 1024 * 1024  # 10MB
     backup_count: int = 5
     log_file: Optional[str] = None
-    
+
     def __post_init__(self):
         if self.level not in ["DEBUG", "INFO", "WARNING", "ERROR"]:
             raise ValueError(f"不支持的日志级别: {self.level}")
@@ -155,7 +155,7 @@ class FirecrawlCollectorConfig:
     app_name: str = "Firecrawl采集器"
     version: str = "1.0.0"
     environment: str = "development"  # development, staging, production
-    
+
     # 核心配置
     firecrawl_api: FirecrawlAPIConfig = None
     sources: List[SourceConfig] = field(default_factory=list)
@@ -164,16 +164,16 @@ class FirecrawlCollectorConfig:
     concurrency: ConcurrencyConfig = field(default_factory=ConcurrencyConfig)
     storage: StorageConfig = field(default_factory=StorageConfig)
     logging: LoggingConfig = field(default_factory=LoggingConfig)
-    
+
     # 输出配置
     default_output_format: str = "markdown"
     supported_formats: List[str] = field(default_factory=lambda: ["markdown", "html", "json", "csv"])
-    
+
     # 监控配置
     enable_monitoring: bool = True
     metrics_port: int = 9090
     health_check_interval: int = 60
-    
+
     def __post_init__(self):
         if not self.firecrawl_api:
             # 尝试从环境变量获取API密钥
@@ -182,43 +182,43 @@ class FirecrawlCollectorConfig:
                 self.firecrawl_api = FirecrawlAPIConfig(api_key=api_key)
             else:
                 raise ValueError("必须提供Firecrawl API配置")
-        
+
         if self.default_output_format not in self.supported_formats:
             raise ValueError(f"不支持的默认输出格式: {self.default_output_format}")
-    
+
     def validate(self) -> List[str]:
         """验证配置
-        
+
         Returns:
             List[str]: 验证错误列表
         """
         errors = []
-        
+
         # 验证API配置
         if not self.firecrawl_api or not self.firecrawl_api.api_key:
             errors.append("Firecrawl API密钥未配置")
-        
+
         # 验证数据源
         if not self.sources:
             errors.append("至少需要配置一个数据源")
-        
+
         for i, source in enumerate(self.sources):
             if not source.url:
                 errors.append(f"数据源{i+1}的URL不能为空")
             if not source.name:
                 errors.append(f"数据源{i+1}的名称不能为空")
-        
+
         # 验证并发配置
         if self.concurrency.max_concurrent > 20:
             errors.append("最大并发数不建议超过20")
-        
+
         # 验证缓存配置
         if self.cache.enabled and self.cache.storage_type == "redis":
             if not self.cache.redis_url:
                 errors.append("Redis缓存需要配置redis_url")
-        
+
         return errors
-    
+
     def to_dict(self) -> Dict[str, Any]:
         """转换为字典格式"""
         return {
@@ -296,34 +296,34 @@ class FirecrawlCollectorConfig:
 
 class ConfigManager:
     """配置管理器"""
-    
+
     def __init__(self, config_file: Optional[str] = None):
         """初始化配置管理器
-        
+
         Args:
             config_file: 配置文件路径
         """
         self.config_file = config_file or "firecrawl_config.yaml"
         self._config: Optional[FirecrawlCollectorConfig] = None
-    
+
     def load_config(self, config_file: Optional[str] = None) -> FirecrawlCollectorConfig:
         """加载配置文件
-        
+
         Args:
             config_file: 配置文件路径
-            
+
         Returns:
             FirecrawlCollectorConfig: 配置对象
         """
         config_file = config_file or self.config_file
         config_path = Path(config_file)
-        
+
         if not config_path.exists():
             # 创建默认配置
             self._config = self._create_default_config()
             self.save_config(config_file)
             return self._config
-        
+
         try:
             with open(config_path, 'r', encoding='utf-8') as f:
                 if config_path.suffix.lower() in ['.yaml', '.yml']:
@@ -332,36 +332,36 @@ class ConfigManager:
                     data = json.load(f)
                 else:
                     raise ValueError(f"不支持的配置文件格式: {config_path.suffix}")
-            
+
             self._config = self._dict_to_config(data)
             return self._config
-            
+
         except Exception as e:
             raise ValueError(f"加载配置文件失败: {str(e)}")
-    
-    def save_config(self, config_file: Optional[str] = None, 
+
+    def save_config(self, config_file: Optional[str] = None,
                    config: Optional[FirecrawlCollectorConfig] = None) -> bool:
         """保存配置文件
-        
+
         Args:
             config_file: 配置文件路径
             config: 配置对象
-            
+
         Returns:
             bool: 保存是否成功
         """
         try:
             config_file = config_file or self.config_file
             config = config or self._config
-            
+
             if not config:
                 raise ValueError("没有可保存的配置")
-            
+
             config_path = Path(config_file)
             config_path.parent.mkdir(parents=True, exist_ok=True)
-            
+
             data = config.to_dict()
-            
+
             with open(config_path, 'w', encoding='utf-8') as f:
                 if config_path.suffix.lower() in ['.yaml', '.yml']:
                     yaml.dump(data, f, default_flow_style=False, allow_unicode=True)
@@ -369,29 +369,29 @@ class ConfigManager:
                     json.dump(data, f, ensure_ascii=False, indent=2)
                 else:
                     raise ValueError(f"不支持的配置文件格式: {config_path.suffix}")
-            
+
             return True
-            
+
         except Exception as e:
             print(f"保存配置文件失败: {str(e)}")
             return False
-    
+
     def get_config(self) -> Optional[FirecrawlCollectorConfig]:
         """获取当前配置"""
         return self._config
-    
+
     def update_config(self, **kwargs) -> bool:
         """更新配置
-        
+
         Args:
             **kwargs: 配置参数
-            
+
         Returns:
             bool: 更新是否成功
         """
         if not self._config:
             return False
-        
+
         try:
             for key, value in kwargs.items():
                 if hasattr(self._config, key):
@@ -399,12 +399,12 @@ class ConfigManager:
             return True
         except Exception:
             return False
-    
+
     def _create_default_config(self) -> FirecrawlCollectorConfig:
         """创建默认配置"""
         # 从环境变量获取API密钥
         api_key = os.getenv("FIRECRAWL_API_KEY", "your-firecrawl-api-key")
-        
+
         return FirecrawlCollectorConfig(
             firecrawl_api=FirecrawlAPIConfig(api_key=api_key),
             sources=[
@@ -423,7 +423,7 @@ class ConfigManager:
                 )
             ]
         )
-    
+
     def _dict_to_config(self, data: Dict[str, Any]) -> FirecrawlCollectorConfig:
         """将字典转换为配置对象"""
         # 处理Firecrawl API配置
@@ -436,7 +436,7 @@ class ConfigManager:
             retry_delay=api_data.get('retry_delay', 1.0),
             rate_limit=api_data.get('rate_limit', 100)
         )
-        
+
         # 处理数据源配置
         sources = []
         for source_data in data.get('sources', []):
@@ -452,7 +452,7 @@ class ConfigManager:
                 custom_params=source_data.get('custom_params', {})
             )
             sources.append(source)
-        
+
         # 处理其他配置
         processing_data = data.get('processing', {})
         processing = ProcessingConfig(
@@ -465,7 +465,7 @@ class ConfigManager:
             extract_keywords=processing_data.get('extract_keywords', True),
             language_detection=processing_data.get('language_detection', True)
         )
-        
+
         cache_data = data.get('cache', {})
         cache = CacheConfig(
             enabled=cache_data.get('enabled', True),
@@ -475,7 +475,7 @@ class ConfigManager:
             redis_url=cache_data.get('redis_url'),
             cache_dir=cache_data.get('cache_dir')
         )
-        
+
         concurrency_data = data.get('concurrency', {})
         concurrency = ConcurrencyConfig(
             max_concurrent=concurrency_data.get('max_concurrent', 5),
@@ -483,7 +483,7 @@ class ConfigManager:
             queue_size=concurrency_data.get('queue_size', 100),
             worker_timeout=concurrency_data.get('worker_timeout', 300)
         )
-        
+
         storage_data = data.get('storage', {})
         storage = StorageConfig(
             output_dir=storage_data.get('output_dir', './output'),
@@ -494,7 +494,7 @@ class ConfigManager:
             backup_retention_days=storage_data.get('backup_retention_days', 30),
             compress_backups=storage_data.get('compress_backups', True)
         )
-        
+
         logging_data = data.get('logging', {})
         logging_config = LoggingConfig(
             level=logging_data.get('level', 'INFO'),
@@ -505,7 +505,7 @@ class ConfigManager:
             backup_count=logging_data.get('backup_count', 5),
             log_file=logging_data.get('log_file', 'firecrawl_collector.log')
         )
-        
+
         return FirecrawlCollectorConfig(
             app_name=data.get('app_name', 'Firecrawl采集器'),
             version=data.get('version', '1.0.0'),
@@ -550,10 +550,10 @@ def save_config_to_file(config: FirecrawlCollectorConfig, config_file: str) -> b
 if __name__ == "__main__":
     # 创建配置管理器
     manager = ConfigManager("example_config.yaml")
-    
+
     # 加载配置
     config = manager.load_config()
-    
+
     # 验证配置
     errors = config.validate()
     if errors:
@@ -562,7 +562,7 @@ if __name__ == "__main__":
             print(f"  - {error}")
     else:
         print("配置验证通过")
-    
+
     # 打印配置摘要
     print(f"\n应用名称: {config.app_name}")
     print(f"版本: {config.version}")
@@ -571,7 +571,7 @@ if __name__ == "__main__":
     print(f"默认输出格式: {config.default_output_format}")
     print(f"最大并发数: {config.concurrency.max_concurrent}")
     print(f"缓存启用: {config.cache.enabled}")
-    
+
     # 保存配置
     if manager.save_config():
         print("\n配置保存成功")

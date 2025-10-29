@@ -1,0 +1,66 @@
+{
+  "news_sources": {
+    "hawaiinewsnow": {
+      "url": "https://www.hawaiinewsnow.com/",
+      "name": "Hawaii News Now",
+      "type": "general",
+      "scrape_method": "crawl",
+      "cache_ttl": 3600,
+      "enabled": true
+    },
+    "staradvertiser": {
+      "url": "https://www.staradvertiser.com/",
+      "name": "Honolulu Star-Advertiser",
+      "type": "general",
+      "scrape_method": "crawl",
+      "cache_ttl": 3600,
+      "enabled": true
+    },
+    "civilbeat": {
+      "url": "https://www.civilbeat.org/",
+      "name": "Honolulu Civil Beat",
+      "type": "investigative",
+      "scrape_method": "crawl",
+      "cache_ttl": 7200,
+      "enabled": true
+    }
+  },
+  "restaurant_sources": {
+    "yelp_chinese": {
+      "url": "https://www.yelp.com/search?find_desc=Chinese&find_loc=Honolulu,+HI",
+      "name": "Yelp - 檀香山中餐",
+      "type": "restaurant",
+      "scrape_method": "search",
+      "cache_ttl": 86400,
+      "enabled": true
+    },
+    "yelp_japanese": {
+      "url": "https://www.yelp.com/search?find_desc=Japanese&find_loc=Honolulu,+HI",
+      "name": "Yelp - 檀香山日料",
+      "type": "restaurant",
+      "scrape_method": "search",
+      "cache_ttl": 86400,
+      "enabled": true
+    }
+  },
+  "housing_sources": {
+    "craigslist_honolulu": {
+      "url": "https://honolulu.craigslist.org/search/apa",
+      "name": "Craigslist - 檀香山租房",
+      "type": "housing",
+      "scrape_method": "crawl",
+      "cache_ttl": 1800,
+      "enabled": true
+    }
+  },
+  "community_sources": {
+    "kauai_chinese": {
+      "url": "https://www.kauaichineseassociation.org/",
+      "name": "Kauai Chinese Association",
+      "type": "community",
+      "scrape_method": "map",
+      "cache_ttl": 86400,
+      "enabled": true
+    }
+  }
+}
