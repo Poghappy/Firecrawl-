@@ -62,7 +62,7 @@ poetry install
 7. Click "Add New Webhook to Workspace"
 8. Select the channel where you want to receive notifications
 9. Click "Allow" to authorize the webhook
-10. Copy the webhook URL (it should look like `https://hooks.slack.com/services/TXXXXXXXX/BXXXXXXXX/XXXXXXXXXXXXXXXXXX`)
+10. Copy the webhook URL (it should look like `https://hooks.slack.com/services/YOUR_WORKSPACE/YOUR_CHANNEL/YOUR_TOKEN`)
 
 ### Step 5: Configure environment variables
 
@@ -76,7 +76,7 @@ Edit the `.env` file and fill in your Firecrawl API key and Slack webhook URL:
 
 ```yaml
 FIRECRAWL_API_KEY=fc-your_api_key_here
-SLACK_WEBHOOK_URL=https://hooks.slack.com/services/TXXXXXXXX/BXXXXXXXX/XXXXXXXXXXXXXXXXXX
+SLACK_WEBHOOK_URL=YOUR_SLACK_WEBHOOK_URL_HERE
 NOTIFICATION_FREQUENCY=daily
 NOTIFICATION_TIME=09:00
 SEARCH_KEYWORDS=python,ml,ai
