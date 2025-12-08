@@ -127,3 +127,4 @@ pylint>=3.0.0                      # 代码分析
 # ============================================
 mkdocs>=1.5.0                      # 文档生成
 mkdocs-material>=9.5.0             # Material 主题
+urllib3>=2.6.0 # not directly required, pinned by Snyk to avoid a vulnerability
