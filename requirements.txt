@@ -13,7 +13,7 @@ firecrawl-py>=1.0.0                # Firecrawl Python SDK（支持 AsyncFirecraw
 # ============================================
 fastapi>=0.104.0                   # FastAPI Web 框架
 uvicorn[standard]>=0.24.0          # ASGI 服务器
-aiohttp>=3.8.0                     # 异步 HTTP 客户端
+aiohttp>=3.13.3                     # 异步 HTTP 客户端
 httpx>=0.25.0                      # 现代 HTTP 客户端（支持异步）
 
 # ============================================
@@ -127,3 +127,4 @@ pylint>=3.0.0                      # 代码分析
 # ============================================
 mkdocs>=1.5.0                      # 文档生成
 mkdocs-material>=9.5.0             # Material 主题
+urllib3>=2.6.3 # not directly required, pinned by Snyk to avoid a vulnerability
