@@ -66,7 +66,7 @@ APScheduler>=3.10.0                # 高级任务调度
 python-multipart>=0.0.6            # 表单数据解析
 python-jose[cryptography]>=3.3.0   # JWT 令牌
 passlib[bcrypt]>=1.7.4             # 密码哈希
-cryptography>=41.0.0               # 加密库
+cryptography>=46.0.5               # 加密库
 
 # ============================================
 # 配置和环境
